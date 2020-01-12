@@ -6,3 +6,15 @@
 
 #IncludeRegexTransform: 
 
+../include/Frame.h
+string
+-
+unordered_map
+-
+vector
+-
+
+/home/joni/CLionProjects/Boost_Echo_Client/src/Frame.cpp
+Frame.h
+-
+

@@ -96,11 +96,53 @@ CMakeFiles/Boost_Echo_Client.dir/src/Frame.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boost_Echo_Client.dir/src/Frame.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joni/CLionProjects/Boost_Echo_Client/src/Frame.cpp -o CMakeFiles/Boost_Echo_Client.dir/src/Frame.cpp.s
 
+CMakeFiles/Boost_Echo_Client.dir/src/User.cpp.o: CMakeFiles/Boost_Echo_Client.dir/flags.make
+CMakeFiles/Boost_Echo_Client.dir/src/User.cpp.o: ../src/User.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joni/CLionProjects/Boost_Echo_Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Boost_Echo_Client.dir/src/User.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Boost_Echo_Client.dir/src/User.cpp.o -c /home/joni/CLionProjects/Boost_Echo_Client/src/User.cpp
+
+CMakeFiles/Boost_Echo_Client.dir/src/User.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Boost_Echo_Client.dir/src/User.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joni/CLionProjects/Boost_Echo_Client/src/User.cpp > CMakeFiles/Boost_Echo_Client.dir/src/User.cpp.i
+
+CMakeFiles/Boost_Echo_Client.dir/src/User.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boost_Echo_Client.dir/src/User.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joni/CLionProjects/Boost_Echo_Client/src/User.cpp -o CMakeFiles/Boost_Echo_Client.dir/src/User.cpp.s
+
+CMakeFiles/Boost_Echo_Client.dir/src/UserCommands.cpp.o: CMakeFiles/Boost_Echo_Client.dir/flags.make
+CMakeFiles/Boost_Echo_Client.dir/src/UserCommands.cpp.o: ../src/UserCommands.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joni/CLionProjects/Boost_Echo_Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Boost_Echo_Client.dir/src/UserCommands.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Boost_Echo_Client.dir/src/UserCommands.cpp.o -c /home/joni/CLionProjects/Boost_Echo_Client/src/UserCommands.cpp
+
+CMakeFiles/Boost_Echo_Client.dir/src/UserCommands.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Boost_Echo_Client.dir/src/UserCommands.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joni/CLionProjects/Boost_Echo_Client/src/UserCommands.cpp > CMakeFiles/Boost_Echo_Client.dir/src/UserCommands.cpp.i
+
+CMakeFiles/Boost_Echo_Client.dir/src/UserCommands.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boost_Echo_Client.dir/src/UserCommands.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joni/CLionProjects/Boost_Echo_Client/src/UserCommands.cpp -o CMakeFiles/Boost_Echo_Client.dir/src/UserCommands.cpp.s
+
+CMakeFiles/Boost_Echo_Client.dir/src/StompConnectionProtocal.cpp.o: CMakeFiles/Boost_Echo_Client.dir/flags.make
+CMakeFiles/Boost_Echo_Client.dir/src/StompConnectionProtocal.cpp.o: ../src/StompConnectionProtocal.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joni/CLionProjects/Boost_Echo_Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Boost_Echo_Client.dir/src/StompConnectionProtocal.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Boost_Echo_Client.dir/src/StompConnectionProtocal.cpp.o -c /home/joni/CLionProjects/Boost_Echo_Client/src/StompConnectionProtocal.cpp
+
+CMakeFiles/Boost_Echo_Client.dir/src/StompConnectionProtocal.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Boost_Echo_Client.dir/src/StompConnectionProtocal.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joni/CLionProjects/Boost_Echo_Client/src/StompConnectionProtocal.cpp > CMakeFiles/Boost_Echo_Client.dir/src/StompConnectionProtocal.cpp.i
+
+CMakeFiles/Boost_Echo_Client.dir/src/StompConnectionProtocal.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boost_Echo_Client.dir/src/StompConnectionProtocal.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joni/CLionProjects/Boost_Echo_Client/src/StompConnectionProtocal.cpp -o CMakeFiles/Boost_Echo_Client.dir/src/StompConnectionProtocal.cpp.s
+
 # Object files for target Boost_Echo_Client
 Boost_Echo_Client_OBJECTS = \
 "CMakeFiles/Boost_Echo_Client.dir/src/connectionHandler.cpp.o" \
 "CMakeFiles/Boost_Echo_Client.dir/src/echoClient.cpp.o" \
-"CMakeFiles/Boost_Echo_Client.dir/src/Frame.cpp.o"
+"CMakeFiles/Boost_Echo_Client.dir/src/Frame.cpp.o" \
+"CMakeFiles/Boost_Echo_Client.dir/src/User.cpp.o" \
+"CMakeFiles/Boost_Echo_Client.dir/src/UserCommands.cpp.o" \
+"CMakeFiles/Boost_Echo_Client.dir/src/StompConnectionProtocal.cpp.o"
 
 # External object files for target Boost_Echo_Client
 Boost_Echo_Client_EXTERNAL_OBJECTS =
@@ -108,11 +150,12 @@ Boost_Echo_Client_EXTERNAL_OBJECTS =
 Boost_Echo_Client: CMakeFiles/Boost_Echo_Client.dir/src/connectionHandler.cpp.o
 Boost_Echo_Client: CMakeFiles/Boost_Echo_Client.dir/src/echoClient.cpp.o
 Boost_Echo_Client: CMakeFiles/Boost_Echo_Client.dir/src/Frame.cpp.o
+Boost_Echo_Client: CMakeFiles/Boost_Echo_Client.dir/src/User.cpp.o
+Boost_Echo_Client: CMakeFiles/Boost_Echo_Client.dir/src/UserCommands.cpp.o
+Boost_Echo_Client: CMakeFiles/Boost_Echo_Client.dir/src/StompConnectionProtocal.cpp.o
 Boost_Echo_Client: CMakeFiles/Boost_Echo_Client.dir/build.make
-Boost_Echo_Client: /usr/lib/x86_64-linux-gnu/libboost_system.so
-Boost_Echo_Client: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
 Boost_Echo_Client: CMakeFiles/Boost_Echo_Client.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/joni/CLionProjects/Boost_Echo_Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable Boost_Echo_Client"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/joni/CLionProjects/Boost_Echo_Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable Boost_Echo_Client"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Boost_Echo_Client.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

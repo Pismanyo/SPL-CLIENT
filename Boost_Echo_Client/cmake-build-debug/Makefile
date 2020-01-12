@@ -150,6 +150,87 @@ src/Frame.cpp.s:
 	$(MAKE) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/Frame.cpp.s
 .PHONY : src/Frame.cpp.s
 
+src/StompConnectionProtocal.o: src/StompConnectionProtocal.cpp.o
+
+.PHONY : src/StompConnectionProtocal.o
+
+# target to build an object file
+src/StompConnectionProtocal.cpp.o:
+	$(MAKE) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/StompConnectionProtocal.cpp.o
+.PHONY : src/StompConnectionProtocal.cpp.o
+
+src/StompConnectionProtocal.i: src/StompConnectionProtocal.cpp.i
+
+.PHONY : src/StompConnectionProtocal.i
+
+# target to preprocess a source file
+src/StompConnectionProtocal.cpp.i:
+	$(MAKE) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/StompConnectionProtocal.cpp.i
+.PHONY : src/StompConnectionProtocal.cpp.i
+
+src/StompConnectionProtocal.s: src/StompConnectionProtocal.cpp.s
+
+.PHONY : src/StompConnectionProtocal.s
+
+# target to generate assembly for a file
+src/StompConnectionProtocal.cpp.s:
+	$(MAKE) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/StompConnectionProtocal.cpp.s
+.PHONY : src/StompConnectionProtocal.cpp.s
+
+src/User.o: src/User.cpp.o
+
+.PHONY : src/User.o
+
+# target to build an object file
+src/User.cpp.o:
+	$(MAKE) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/User.cpp.o
+.PHONY : src/User.cpp.o
+
+src/User.i: src/User.cpp.i
+
+.PHONY : src/User.i
+
+# target to preprocess a source file
+src/User.cpp.i:
+	$(MAKE) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/User.cpp.i
+.PHONY : src/User.cpp.i
+
+src/User.s: src/User.cpp.s
+
+.PHONY : src/User.s
+
+# target to generate assembly for a file
+src/User.cpp.s:
+	$(MAKE) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/User.cpp.s
+.PHONY : src/User.cpp.s
+
+src/UserCommands.o: src/UserCommands.cpp.o
+
+.PHONY : src/UserCommands.o
+
+# target to build an object file
+src/UserCommands.cpp.o:
+	$(MAKE) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/UserCommands.cpp.o
+.PHONY : src/UserCommands.cpp.o
+
+src/UserCommands.i: src/UserCommands.cpp.i
+
+.PHONY : src/UserCommands.i
+
+# target to preprocess a source file
+src/UserCommands.cpp.i:
+	$(MAKE) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/UserCommands.cpp.i
+.PHONY : src/UserCommands.cpp.i
+
+src/UserCommands.s: src/UserCommands.cpp.s
+
+.PHONY : src/UserCommands.s
+
+# target to generate assembly for a file
+src/UserCommands.cpp.s:
+	$(MAKE) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/UserCommands.cpp.s
+.PHONY : src/UserCommands.cpp.s
+
 src/connectionHandler.o: src/connectionHandler.cpp.o
 
 .PHONY : src/connectionHandler.o
@@ -216,6 +297,15 @@ help:
 	@echo "... src/Frame.o"
 	@echo "... src/Frame.i"
 	@echo "... src/Frame.s"
+	@echo "... src/StompConnectionProtocal.o"
+	@echo "... src/StompConnectionProtocal.i"
+	@echo "... src/StompConnectionProtocal.s"
+	@echo "... src/User.o"
+	@echo "... src/User.i"
+	@echo "... src/User.s"
+	@echo "... src/UserCommands.o"
+	@echo "... src/UserCommands.i"
+	@echo "... src/UserCommands.s"
 	@echo "... src/connectionHandler.o"
 	@echo "... src/connectionHandler.i"
 	@echo "... src/connectionHandler.s"

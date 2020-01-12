@@ -6,23 +6,63 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
-
+using namespace std;
 class Frame {
 private:
-    std::string stompCommand;
-    std::vector<std::string> headersVector;
-    std::string frameBody;
+
 
 public:
-    Frame(std::string stompCommand,std::vector<std::string> headersVector,std::string frameBody);
+    Frame()= default;
     virtual ~Frame();
 };
 
-class connectFrame : public Frame{};
 
+class Connect:public Frame {
+private :
+    string version;
+    string username;
+    string password;
+    string host;
+public:
+    Connect(string version,string host,string username,string password);
+    virtual string toString();
+};
 class subscribeFrame : public Frame{};
 
-class sendFrame : public Frame{};
+class Send:public Frame{
+private :
+    string topic;
+    string message;
 
-class disconnectFrame: public Frame{};
+public:
+    Send(string topic,string message);
+    virtual string toString();
+};
+
+class Subscribe : public Frame{
+private :
+    string topic;
+    int id;
+    int recite;
+public:
+    Subscribe(string topic,int id,int recite);
+    virtual string toString();
+};
+
+class Unsubscribe : public Frame {
+private :
+    int id;
+public:
+    Unsubscribe(int id);
+    virtual string toString();
+};
+
+class Disconnect : public Frame {
+private :
+    int recite;
+public:
+    Disconnect(int recite);
+    virtual string toString();
+};
+
 #endif //BOOST_ECHO_CLIENT_FRAME_H

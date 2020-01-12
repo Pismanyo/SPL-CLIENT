@@ -34,11 +34,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/joni/CLionProjects/Boost_Echo_Client/."/>
-					<Add directory="/home/joni/CLionProjects/Boost_Echo_Client/bin"/>
-					<Add directory="/home/joni/CLionProjects/Boost_Echo_Client/cmake-build-debug"/>
 					<Add directory="/home/joni/CLionProjects/Boost_Echo_Client/include"/>
-					<Add directory="/home/joni/CLionProjects/Boost_Echo_Client/src"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -62,11 +58,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/joni/CLionProjects/Boost_Echo_Client/."/>
-					<Add directory="/home/joni/CLionProjects/Boost_Echo_Client/bin"/>
-					<Add directory="/home/joni/CLionProjects/Boost_Echo_Client/cmake-build-debug"/>
 					<Add directory="/home/joni/CLionProjects/Boost_Echo_Client/include"/>
-					<Add directory="/home/joni/CLionProjects/Boost_Echo_Client/src"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -103,16 +95,28 @@
 		<Unit filename="/home/joni/CLionProjects/Boost_Echo_Client/include/StompMessageEncoderDecoder.h">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/home/joni/CLionProjects/Boost_Echo_Client/include/StompMessageProtocol.h">
+		<Unit filename="/home/joni/CLionProjects/Boost_Echo_Client/include/User.h">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/joni/CLionProjects/Boost_Echo_Client/include/UserCommands.h">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
 		<Unit filename="/home/joni/CLionProjects/Boost_Echo_Client/include/connectionHandler.h">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/home/joni/CLionProjects/Boost_Echo_Client/makefile">
+		<Unit filename="/home/joni/CLionProjects/Boost_Echo_Client/src/Frame.cpp">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/home/joni/CLionProjects/Boost_Echo_Client/src/Frame.cpp">
+		<Unit filename="/home/joni/CLionProjects/Boost_Echo_Client/src/StompConnectionProtocal.cpp">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/joni/CLionProjects/Boost_Echo_Client/src/StompConnectionProtocal.h">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/joni/CLionProjects/Boost_Echo_Client/src/User.cpp">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/joni/CLionProjects/Boost_Echo_Client/src/UserCommands.cpp">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
 		<Unit filename="/home/joni/CLionProjects/Boost_Echo_Client/src/connectionHandler.cpp">
