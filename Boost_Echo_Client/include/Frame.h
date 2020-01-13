@@ -14,6 +14,7 @@ private:
 public:
     Frame()= default;
     virtual ~Frame();
+    virtual string toString()=0;
 };
 
 

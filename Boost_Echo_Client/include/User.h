@@ -12,6 +12,7 @@
 #include <boost/lambda/bind.hpp>
 #include "Frame.h"
 #include "connectionHandler.h"
+#include "../src/Books.h"
 
 using std::string;
 using std::cin;
@@ -26,10 +27,12 @@ class User {
 private:
     string* username;
     string* password;
-    map<string,vector<string>> books;
-    map<string,vector<string>> lookingForBorrowedBooks;
-    map<string,map<string,string>> borrowedbooks;
-    map<int,Frame> pendingrecite;
+    map<string,Books> books;
+    //map<string,vector<string>> books;
+    //map<string,vector<string>> lookingForBorrowedBooks;
+   // map<string,map<string,string>> borrowedbooks;
+   // map<string,map<string,string>> awaitingReturn;
+    map<int,Frame*> pendingrecite;
     bool active;
     int disconectid;
     bool awaiting;
@@ -45,10 +48,10 @@ public:
     User(string* username,string* password);
     User();
     bool isSubsribed(string topic);
-    void addPendingrecite(int recite,Frame frame);
+    void addPendingrecite(int recite,Frame* frame);
     int getidViaTopic(string topic);
     void subsribe(string topic,int id);
-    void unsubsribe(int id,string topic);
+    void unsubsribe(int id);
     int numForRecite();
     string getUsername();
     string getPassword();
@@ -59,11 +62,16 @@ public:
     void setuserandpass(string username,string passsword);
     void setawait(bool await);
     bool getawait();
-    void lookForBookToBorrow(string topic, string book);
+    void addbooksWantingToborrow(string topic, string book);
+    void rentBook(string topic,string book);
+    void rentBorrowedBook(string topic,string book);
+    bool hasbooksWantingToborrow(string topic, string book);
     bool hasBorrowedbook(string topic,string book);
+    void addBorrowedbook(string topic,string book, string username);
     string returnBorrowedbook(string topic,string book);
-    Frame getRecitebyId(int reciteid)
-
+    Frame* getRecitebyId(int reciteid);
+    void removeBookRentedOut(string topic,string book);
+    string printBooksInTopic(string topic);
 };
 
 

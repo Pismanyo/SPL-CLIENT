@@ -39,6 +39,7 @@ string Send::toString() {
     a+="destination:";
     a+=this->topic;
     a+='\n';
+    a+='\n';
     a+=this->message;
     a+='\n';
     a+='\0';

@@ -5,6 +5,7 @@
 #ifndef BOOST_ECHO_CLIENT_STOMPCONNECTIONPROTOCAL_H
 #define BOOST_ECHO_CLIENT_STOMPCONNECTIONPROTOCAL_H
 
+#include <mutex>
 
 #include "User.h"
 
@@ -12,7 +13,7 @@ class StompConnectionProtocal {
 private:
     User* activeuser;
     bool terminate;
-    std::mutex _mutex;
+    mutex _mutex;
     ConnectionHandler* connectionHandler;
 public:
     StompConnectionProtocal(User* user,ConnectionHandler* connectionHandler);
