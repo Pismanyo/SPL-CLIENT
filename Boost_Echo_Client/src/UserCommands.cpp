@@ -142,7 +142,7 @@ void UserCommands::subsribe(string topic) {
     int recite=activeuser->numForRecite();
     int id=activeuser->numForRecite();
     Subscribe ans(topic,id,recite);
-    activeuser->addPendingrecite(recite,&ans);
+    activeuser->addPendingrecite(recite,ans.toString());
     cout<< std::to_string(id) << endl;
     this->stomp->send(ans.toString());
 }
@@ -151,7 +151,7 @@ void UserCommands::subsribe(string topic) {
 void UserCommands::logout() {
     int recite = activeuser->numForRecite();
     Disconnect byebye=(recite);
-    activeuser->addPendingrecite(recite, &byebye);
+    activeuser->addPendingrecite(recite, byebye.toString());
     this->stomp->send(byebye.toString());
 }
 

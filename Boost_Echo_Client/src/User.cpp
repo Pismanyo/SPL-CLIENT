@@ -5,14 +5,14 @@
 #include "User.h"
 
 string User::getUsername() {
-    return (*this->username);
+    return (this->username);
 }
 
 string User::getPassword() {
-    return (*this->password);
+    return (this->password);
 }
 
-User::User(string* username, string* password) {
+User::User(string username, string password) {
     this->username=username;
     active= false;
     this->password=password;
@@ -40,8 +40,8 @@ User::User() {
 }
 
 void User::setuserandpass(string username, string passsword) {
-    this->username=&username;
-    this->password=&passsword;
+    this->username=username;
+    this->password=passsword;
     awaiting= true;
     this->reciteconter=0;
 
@@ -116,11 +116,11 @@ string User::returnBorrowedbook(string topic, string book) {
     return ans;
 }
 
-Frame* User::getRecitebyId(int reciteid) {
+string User::getRecitebyId(int reciteid) {
     return this->pendingrecite[reciteid];
 }
 
-void User::addPendingrecite(int recite, Frame *frame) {
+void User::addPendingrecite(int recite, string frame) {
     pendingrecite.insert({recite,frame});
 }
 

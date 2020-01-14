@@ -21,6 +21,7 @@ public:
     bool send(string frame);
     void setConnectionHandler (ConnectionHandler* connect);
 
+    vector<string> split(string tosplite, char denimator);
 };
 
 

@@ -26,46 +26,48 @@ void StompConnectionProtocal::run() {
             std::cout << "Disconnected. Exiting...\n" << std::endl;
         }
         cout << answer << endl;
+//        stringstream split(answer);
+//        string token;
+//        vector<string> splitLines;
+//        while(getline(split,token,'\n'))
+//        splitLines.push_back(token);
+        vector<string> splitLines=this->split(answer,'\n');
+        string stompCommand=splitLines[0];
+        for(string s: splitLines)
+            cout<< s << endl;
         // A C string must end with a 0 char delimiter.  When we filled the answer buffer from the socket
         // we filled up to the \n char - we must make sure now that a 0 char is also present. So we truncate last character.
-        string firstline=answer.substr(0,'n');
-        if (firstline.compare("CONNECTED"))
+        if (stompCommand=="CONNECTED")
         {
             activeuser->setActive(true);
             activeuser->setawait(false);
         }
-       else  if(firstline.compare("RECEIPT"))
+       else if(stompCommand=="RECEIPT")
         {
-            answer=answer.substr(answer.find(':')+1);
-            int deletpoint=answer.find('\n');
-            string reciteidstr=answer.substr(0,deletpoint-1);
-            while(reciteidstr[0]=='0')
-                reciteidstr=reciteidstr.substr(1);
-            int reicitid=stoi(reciteidstr);
-            Frame* toProforam=activeuser->getRecitebyId(reicitid);
-            string fameline=toProforam->toString().substr(0,toProforam->toString().find('\n')-1);
-
-
-            if(fameline.compare("UNSUBSCRIBE")==0)
+            vector<string> reciteid=this->split(splitLines.at(1),':');
+            int reicitid=stoi(reciteid.at(1));
+            string toProforam=activeuser->getRecitebyId(reicitid);
+            vector<string> frameLines=this->split(toProforam,'\n');
+            if(frameLines.at(0).compare("UNSUBSCRIBE")==0)
             {
-                string idrstr=toProforam->toString().substr(toProforam->toString().find(':')+1);
+                string idrstr=toProforam.substr(toProforam.find(':')+1);
                 idrstr=idrstr.substr(0,idrstr.find('\n')-1);
                 int subId=  stoi(idrstr);
                 activeuser->unsubsribe(subId);
                 cout << "Unsubsribed successfil" << endl;
 
 
-            } else if (fameline.compare("SUBSCRIBE")==0)
+            } else if (frameLines.at(0).compare("SUBSCRIBE")==0)
             {
-                string seondline=toProforam->toString().substr(toProforam->toString().find(':'+1));
-                string topic=seondline.substr(0,seondline.find('\n'-1));
-                string idrstr=seondline.substr(seondline.find(':')+1,seondline.find('\n')-1);
-                int subId=  stoi(idrstr);
+                vector<string> secondHeader=this->split(frameLines.at(1),':');
+                string topic=secondHeader.at(1);
+                secondHeader=this->split(frameLines.at(2),':');
+                int subId=  stoi(secondHeader.at(1));
                 activeuser->subsribe(topic,subId);
                 cout << "Subsribed successfil" << endl;
 
             }
-            else if (fameline.compare("DISCONNECT")==0)
+            else if (frameLines.at(0).compare("DISCONNECT")==0)
             {
                 terminate= true;
                 delete this->activeuser;
@@ -73,7 +75,7 @@ void StompConnectionProtocal::run() {
             }
 
 
-        } else if(firstline.compare("MESSAGE"))
+        } else if(splitLines.at(0).compare("MESSAGE")==0)
         {
             answer=answer.substr(answer.find(':')+1);
             int deletpoint=answer.find('\n');
@@ -158,6 +160,7 @@ void StompConnectionProtocal::run() {
        }
 
 
+
 //        size_t pos = 0;
 //        std::string token;
 //        while ((pos = answer.find(spliter)) != std::string::npos) {
@@ -167,6 +170,16 @@ void StompConnectionProtocal::run() {
 //        }
 //        std::cout << answer << std::endl;
     }
+}
+vector<string> StompConnectionProtocal::split(string tosplite,char denimator)
+{
+    stringstream split(tosplite);
+    string token;
+    vector<string> ans;
+    while(getline(split,token,denimator))
+        ans.push_back(token);
+    return ans;
+
 }
 
 bool StompConnectionProtocal::send(string frame) {

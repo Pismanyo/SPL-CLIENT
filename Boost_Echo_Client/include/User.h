@@ -25,14 +25,14 @@ using std::map;
 
 class User {
 private:
-    string* username;
-    string* password;
+    string username;
+    string password;
     map<string,Books> books;
     //map<string,vector<string>> books;
     //map<string,vector<string>> lookingForBorrowedBooks;
    // map<string,map<string,string>> borrowedbooks;
    // map<string,map<string,string>> awaitingReturn;
-    map<int,Frame*> pendingrecite;
+    map<int,string> pendingrecite;
     bool active;
     int disconectid;
     bool awaiting;
@@ -44,10 +44,10 @@ private:
 
 public:
    // void adddfunction(int reicte,std::function <void()>a);
-    User(string* username,string* password);
+    User(string username,string password);
     User();
     bool isSubsribed(string topic);
-    void addPendingrecite(int recite,Frame* frame);
+    void addPendingrecite(int recite,string frame);
     int getidViaTopic(string topic);
     void subsribe(string topic,int id);
     void unsubsribe(int id);
@@ -68,7 +68,7 @@ public:
     bool hasBorrowedbook(string topic,string book);
     void addBorrowedbook(string topic,string book, string username);
     string returnBorrowedbook(string topic,string book);
-    Frame* getRecitebyId(int reciteid);
+    string getRecitebyId(int reciteid);
     void removeBookRentedOut(string topic,string book);
     string printBooksInTopic(string topic);
 };
