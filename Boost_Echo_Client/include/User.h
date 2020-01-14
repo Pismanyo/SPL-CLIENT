@@ -41,7 +41,6 @@ private:
   //  map<int,string>pendingSubsribed;
    // map<int,string>pendingUnsubsribed;
     int reciteconter;
-    int idcounter;
 
 public:
    // void adddfunction(int reicte,std::function <void()>a);

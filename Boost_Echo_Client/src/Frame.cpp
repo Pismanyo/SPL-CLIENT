@@ -12,15 +12,17 @@ string Connect::toString() {
     a+='\n';
     a+="accept-version:";
     a+=this->version;
+    a+='\n';
     a+="host:";
     a+=this->host;
+    a+='\n';
     a+="login:";
     a+=this->username;
     a+='\n';
     a+="passcode:";
     a+=this->password;
     a+='\n';
-    a+='\0';
+  //  a+='\0';
 
     return a;
 }
@@ -42,8 +44,7 @@ string Send::toString() {
     a+='\n';
     a+=this->message;
     a+='\n';
-    a+='\0';
-
+   // a+='\0';
     return a;
 }
 
@@ -53,6 +54,9 @@ Send::Send(string topic, string message) {
 }
 
 Subscribe::Subscribe(string topic, int id, int recite) {
+    this->topic=topic;
+    this->id=id;
+    this->recite=recite;
 
 }
 
@@ -68,12 +72,13 @@ string Subscribe::toString() {
     a+="receipt:";
     a+=std::to_string(this->recite);
     a+='\n';
-    a+='\0';
+ //   a+='\0';
 
     return a;
 }
 
 Unsubscribe::Unsubscribe( int id) {
+    this->id=id;
 
 }
 
@@ -83,7 +88,7 @@ string Unsubscribe::toString() {
     a+="id:";
     a+=std::to_string(this->id);
     a+='\n';
-    a+='\0';
+   // a+='\0';
 
 
 
@@ -96,7 +101,7 @@ string Disconnect::toString() {
     a+="receipt:";
     a+=std::to_string(this->recite);
     a+='\n';
-    a+='\0';
+  //  a+='\0';
 
 
 

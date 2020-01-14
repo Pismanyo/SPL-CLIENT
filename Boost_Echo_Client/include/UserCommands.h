@@ -12,8 +12,11 @@
 class UserCommands{
 private:
     User* activeuser;
+    StompConnectionProtocal* stomp;
+    bool terminate;
+
 public:
-    UserCommands (User* active);
+    UserCommands (User* active,StompConnectionProtocal* stomp, Connect a);
 
     void run();
     void login(string version,string username,string password);

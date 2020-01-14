@@ -34,14 +34,14 @@ int main (int argc, char *argv[]) {
            } else {
                Connect ans("1.2", host, inputs[2], inputs[3]);
                activeuser->setuserandpass(inputs[2], inputs[3]);
-           }
-           StompConnectionProtocal *stomp = new StompConnectionProtocal(activeuser, connectionHandler);
-           std::thread th2(&StompConnectionProtocal::run, stomp);
-           UserCommands usercommands(activeuser);
-           std::thread th1(&UserCommands::run, usercommands);
+               StompConnectionProtocal *stomp = new StompConnectionProtocal(activeuser, connectionHandler);
+               std::thread th2(&StompConnectionProtocal::run, stomp);
+               UserCommands usercommands(activeuser,stomp, ans);
+               std::thread th1(&UserCommands::run, usercommands);
 
-           th1.join();
-           th2.join();
+               th1.join();
+               th2.join();
+           }
 
        }
    }
