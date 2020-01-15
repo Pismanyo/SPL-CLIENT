@@ -32,6 +32,8 @@ public:
     void borrow(string topic,string book);
 
     void returnCommand(string topic,string book);
+
+    vector<string> split(string tosplite, char denimator);
 };
 
 

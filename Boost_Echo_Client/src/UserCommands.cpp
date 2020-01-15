@@ -7,21 +7,29 @@
 #include <Frame.h>
 #include <StompConnectionProtocal.h>
 #include "UserCommands.h"
+vector<string> UserCommands::split(string tosplite,char denimator)
+{
+    stringstream split(tosplite);
+    string token;
+    vector<string> ans;
+    while(getline(split,token,denimator))
+        ans.push_back(token);
+    return ans;
 
+}
 
 void UserCommands::run() {
 
     string answer1;
     int counter;
-    string inputs [5];
     bool terminate= false;
     while (!terminate) {
+
+
+
         getline(cin, answer1);
-        string word;
-        counter = 0;
-        std::stringstream iss(answer1);
-        while (iss >> word && counter < 6)
-            inputs[counter++] = word;
+        vector<string> inputs=this->split(answer1,' ');
+        counter=inputs.size();
         if (inputs[0].compare("login") == 0) {
             if (activeuser->isActive())
                 cout << "Already connected to different user" << endl;
@@ -52,13 +60,15 @@ void UserCommands::run() {
         }
         else if (inputs[0].compare("borrow") == 0) {
 
-            if(counter!=2)
+            if(counter<2)
                 cout << "incorrect input format" << endl;
             else if(!activeuser->isActive())
                 cout << "not connected to a user" << endl;
 
             else
             {
+                for(int i=3;i<inputs.size();i++)
+                    inputs.at(2)+=" "+inputs.at(i);
                 borrow(inputs[1],inputs[2]);
             }
         }
@@ -75,21 +85,25 @@ void UserCommands::run() {
         }
         else if (inputs[0].compare("add") == 0) {
 
-            if (counter != 3)
+            if (counter < 3)
                 cout << "incorrect input format" << endl;
             else if (!activeuser->isActive())
                 cout << "not connected to a user" << endl;
             else {
+                for(int i=3;i<inputs.size();i++)
+                    inputs.at(2)+=" "+inputs.at(i);
                 add(inputs[1],inputs[2]);
             }
         }
         else if (inputs[0].compare("return") == 0) {
 
-            if (counter != 3)
+            if (counter < 3)
                 cout << "incorrect input format" << endl;
             else if (!activeuser->isActive())
                 cout << "not connected to a user" << endl;
             else {
+                for(int i=3;i<inputs.size();i++)
+                    inputs.at(2)+=" "+inputs.at(i);
                 returnCommand(inputs[1],inputs[2]);
             }
         }
@@ -173,7 +187,6 @@ void UserCommands::unsubsribe(string topic) {
 
 void UserCommands::add(string topic,string book) {
     Send ans(topic,(activeuser->getUsername()+" has added the book "+book));
-    activeuser->addBook(topic,book);
     this->stomp->send(ans.toString());
 
 

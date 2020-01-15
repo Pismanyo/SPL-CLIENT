@@ -22,6 +22,7 @@ string Connect::toString() {
     a+="passcode:";
     a+=this->password;
     a+='\n';
+    a+='\n';
   //  a+='\0';
 
     return a;
@@ -72,6 +73,7 @@ string Subscribe::toString() {
     a+="receipt:";
     a+=std::to_string(this->recite);
     a+='\n';
+    a+='\n';
  //   a+='\0';
 
     return a;
@@ -88,6 +90,7 @@ string Unsubscribe::toString() {
     a+="id:";
     a+=std::to_string(this->id);
     a+='\n';
+    a+='\n';
    // a+='\0';
 
 
@@ -100,6 +103,7 @@ string Disconnect::toString() {
     a+='\n';
     a+="receipt:";
     a+=std::to_string(this->recite);
+    a+='\n';
     a+='\n';
   //  a+='\0';
 

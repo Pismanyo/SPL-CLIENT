@@ -50,9 +50,8 @@ void StompConnectionProtocal::run() {
             vector<string> frameLines=this->split(toProforam,'\n');
             if(frameLines.at(0).compare("UNSUBSCRIBE")==0)
             {
-                string idrstr=toProforam.substr(toProforam.find(':')+1);
-                idrstr=idrstr.substr(0,idrstr.find('\n')-1);
-                int subId=  stoi(idrstr);
+                vector<string> recitLineSplite=this->split(frameLines.at(1),':');
+                int subId=  stoi(recitLineSplite.at(1));
                 activeuser->unsubsribe(subId);
                 cout << "Unsubsribed successfil" << endl;
 
@@ -77,24 +76,31 @@ void StompConnectionProtocal::run() {
 
         } else if(splitLines.at(0).compare("MESSAGE")==0)
         {
-            answer=answer.substr(answer.find(':')+1);
-            int deletpoint=answer.find('\n');
-            string subidstr=answer.substr(0,deletpoint-1);
-            int subid=stoi(subidstr);
-            answer=answer.substr(deletpoint+1);
-            answer=answer.substr(answer.find('\n')+1);
-            string topic =answer.substr(answer.find(':')+1,answer.find('\n')-1);
-            answer=answer.substr(answer.find('\n')+1);
-            answer=answer.substr(answer.find('\n')+1);
-            string body=answer.substr(0,answer.find('\0')-1);
-            if (body.find("wish to borrow") != string::npos) // bo wishes to boorow dune
+            vector <string> secondLinestr=this->split(splitLines.at(1),':');
+//            answer=answer.substr(answer.find(':')+1);
+//            int deletpoint=answer.find('\n');
+//            string subidstr=answer.substr(0,deletpoint-1);
+            int subid=stoi(secondLinestr.at(1));
+            vector <string> thirdLinestr=this->split(splitLines.at(3),':');
+            string topic =thirdLinestr.at(1);
+            string body="";
+            for (int i=5;i<splitLines.size();i++)
             {
-                int i = body.length() - 1; // last character
-                while (i != 0 && !isspace(body[i]))
-                    --i;
-                string book = body.substr(i+1);
-
-                 if(body.substr(0,body.find(' ')).compare(activeuser->getUsername())==0)
+                if(splitLines.at(i)!="")
+                 body=body+splitLines.at(i)+"\n";
+            }
+            body=body.substr(0,body.length()-1);
+            cout << "body:"+body << endl;
+            vector<string> bodyWords = this->split(body,' ');
+            if (bodyWords.size()>=5&&body.find("wish to borrow") != string::npos) // bo wishes to boorow dune
+            {
+                string book="";
+                for(int i=4;i<bodyWords.size();i++)
+                {
+                    book=book+bodyWords.at(i)+" ";
+                }
+                book=book.substr(0,book.length()-1);
+                 if(bodyWords.at(0).compare(activeuser->getUsername())==0)
                      activeuser->addbooksWantingToborrow(topic,book);
 
                  else if (activeuser->containsbook(topic,book)||activeuser->hasBorrowedbook(topic,book)){
@@ -103,30 +109,49 @@ void StompConnectionProtocal::run() {
                  }
 
             }
-            else if (body.find("has") != string::npos)//bob has book dune
+            else if (bodyWords.size()>=4&&bodyWords.at(1)==("has")&&bodyWords.at(2)=="book")//bob has book dune
             {
-                int i = body.length() - 1; // last character
-                while (i != 0 && !isspace(body[i]))
-                    --i;
-                string book = body.substr(i+1);
+                string book="";
+                for(int i=3;i<bodyWords.size();i++)
+                {
+                    book=book+bodyWords.at(i)+" ";
+                }
+                book=book.substr(0,book.length()-1);
                 if(activeuser->hasbooksWantingToborrow(topic,book))
                 {
-                    string userToTakeFrom=body.substr(0,body.find(' '));
+                    string userToTakeFrom=bodyWords.at(0);
                     activeuser->addBorrowedbook(topic,book,userToTakeFrom);
                     Send ans(topic,"Taking "+book+" from "+userToTakeFrom);
                     this->send(ans.toString());
                 }
             }
-            else if (body.find("Taking") != string::npos) //Taking Dune from john
+            else if (bodyWords.size()>=4&&bodyWords.at(0)==activeuser->getUsername()&&bodyWords.at(1)==("has")&&bodyWords.at(2)=="added")//bob has added dune
             {
-                int i = body.length() - 1; // last character
-                while (i != 0 && !isspace(body[i]))
-                    --i;
-                string username = body.substr(i+1);
+                string book="";
+                for(int i=5;i<bodyWords.size();i++)
+                {
+                    book=book+bodyWords.at(i)+" ";
+                }
+                book=book.substr(0,book.length()-1);
+                cout << book<< endl;
+                if(activeuser->containsbook(topic,book))
+                    cout << activeuser->getUsername()+" already has book "+book<< endl;
+                else{
+                    activeuser->addBook(topic,book);
+                }
+            }
+            else if (bodyWords.size()>=4&&bodyWords.at(0)==("Taking")) //Taking Dune from john
+            {
+
+                string username =bodyWords.at(bodyWords.size()-1);
                 if(username==activeuser->getUsername())
                 {
-                    string book=body.substr(body.find(' ')+1);
-                    book=book.substr(0,body.find(' ')-1);
+                    string book="";
+                    for(int i=1;i<(bodyWords.size()-2);i++)
+                    {
+                        book=book+bodyWords.at(i)+" ";
+                    }
+                    book=book.substr(0,book.length()-1);
                         if(this->activeuser->containsbook(topic,book))
                         {
                             this->activeuser->rentBook(topic,book);
@@ -138,21 +163,22 @@ void StompConnectionProtocal::run() {
                 }
 
             }
-            else if (body.find("Returning") != string::npos)//Returning Dune to john
+            else if (bodyWords.size()>=4&&bodyWords.at(0)==("Returning"))//Returning Dune to john
             {
-                int i = body.length() - 1; // last character
-                while (i != 0 && !isspace(body[i]))
-                    --i;
-                string username = body.substr(i+1);
+
+                string username = bodyWords.at(bodyWords.size()-1);
                 if(username==activeuser->getUsername())
                 {
-                    string book=body.substr(body.find(' ')+1);
-                    book=book.substr(0,body.find(' ')-1);
+                    string book="";
+                    for(int i=1;i<(bodyWords.size()-2);i++)
+                    {
+                        book=book+bodyWords.at(i)+" ";
+                    }
                     activeuser->removeBookRentedOut(topic,book);
                 }
 
             }
-            else if (body.find("Book status") != string::npos)//Book status
+            else if (bodyWords.size()>=2&&bodyWords.at(0)=="book"&&bodyWords.at(1)=="status")//Book status
             {
                     Send ans(topic,activeuser->getUsername()+":"+activeuser->printBooksInTopic(topic));
                     this->send(ans.toString());

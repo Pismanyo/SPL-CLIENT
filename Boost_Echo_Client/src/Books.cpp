@@ -80,6 +80,6 @@ string Books::allBooksOwned() {
     {
         ans=it->first+",";
     }
-    ans=ans.substr(0,ans.length()-2);
+    ans=ans.substr(0,ans.length()-1);
     return ans;
 }
