@@ -179,6 +179,7 @@ void UserCommands::status(string topic) {
 void UserCommands::unsubsribe(string topic) {
     int id=activeuser->getidViaTopic(topic);
     Unsubscribe ans(id);
+    this->activeuser->addPendingrecite(id,ans.toString());
     this->stomp->send(ans.toString());
     //activeuser->unsubsribe(id,topic);
 

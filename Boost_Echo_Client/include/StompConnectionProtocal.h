@@ -22,6 +22,12 @@ public:
     void setConnectionHandler (ConnectionHandler* connect);
 
     vector<string> split(string tosplite, char denimator);
+
+    void gotReciteMessage();
+
+    void gotReciteMessage(vector<string> splitLines);
+
+    void gotMessageMessage(vector<string> splitLines);
 };
 
 

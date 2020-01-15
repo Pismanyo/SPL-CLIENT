@@ -121,6 +121,8 @@ string User::getRecitebyId(int reciteid) {
 }
 
 void User::addPendingrecite(int recite, string frame) {
+    if(pendingrecite.count(recite)>0)
+        pendingrecite.erase(recite);
     pendingrecite.insert({recite,frame});
 }
 

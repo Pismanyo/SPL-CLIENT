@@ -74,11 +74,11 @@ string Books::allBooksOwned() {
     string ans="";
     for(auto it = books.begin(); it != books.end(); ++it)
     {
-        ans=it->first+",";
+        ans+=it->first+",";
     }
     for(auto it = booksBorrowed.begin(); it != booksBorrowed.end(); ++it)
     {
-        ans=it->first+",";
+        ans+=it->first+",";
     }
     ans=ans.substr(0,ans.length()-1);
     return ans;
