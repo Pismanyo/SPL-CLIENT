@@ -6,6 +6,7 @@
 
 
 Book::Book(string name) {
+    this->boorowed=false;
     this->name=name;
     borrowedFrom= false;
     this->borrowedFrom="";

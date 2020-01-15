@@ -53,6 +53,10 @@ Book Books::getBookBorrwed(string name) {
 }
 
 Book Books::getBookRented(string name) {
+
+    cout<<booksRentedOut[name].getName()<<endl;
+    cout<<booksRentedOut[name].isBorrowed()<<endl;
+
     return this->booksRentedOut[name];
 }
 

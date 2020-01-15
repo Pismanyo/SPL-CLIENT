@@ -148,7 +148,7 @@ void User::addbooksWantingToborrow(string topic, string book) {
 
 void User::rentBook(string topic,string book) {
     Book a=this->books[topic].getBook(book);
-    this->books[topic].addBooksRentedOut(Book(a.getName()));
+    this->books[topic].addBooksRentedOut(a);
     this->books[topic].removeBook(book);
 
 
@@ -157,7 +157,7 @@ void User::rentBook(string topic,string book) {
 
 void User::rentBorrowedBook(string topic, string book) {
     Book a=this->books[topic].getBookBorrwed(book);
-    this->books[topic].addBooksRentedOut(Book(a.getName(),a.getUserBorrowedFrom()));
+    this->books[topic].addBooksRentedOut(a);
     this->books[topic].removeBookBorrwed(book);
 
 }
@@ -170,6 +170,7 @@ void User::removeBookRentedOut(string topic, string book) {
     else {
         this->books[topic].addBook(Book(a.getName()));
     }
+    this->books[topic].removeRentedOut(book);
 
 }
 

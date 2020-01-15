@@ -167,6 +167,7 @@ void StompConnectionProtocal:: gotMessageMessage(vector<string> splitLines){
             {
                 book=book+bodyWords.at(i)+" ";
             }
+            book=book.substr(0,book.length()-1);
             activeuser->removeBookRentedOut(topic,book);
         }
 
@@ -189,7 +190,7 @@ void StompConnectionProtocal:: WishtoBorrow(vector<string> bodyWords,string topi
         activeuser->addbooksWantingToborrow(topic,book);
 
     else if (activeuser->containsbook(topic,book)||activeuser->hasBorrowedbook(topic,book)){
-        Send ans(topic,activeuser->getUsername()+" has "+book);
+        Send ans(topic,activeuser->getUsername()+" has book "+book);
         this->send(ans.toString());
     }
 }
