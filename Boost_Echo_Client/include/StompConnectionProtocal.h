@@ -28,6 +28,12 @@ public:
     void gotReciteMessage(vector<string> splitLines);
 
     void gotMessageMessage(vector<string> splitLines);
+
+    void WishtoBorrow(vector<string> bodyWords, string topic);
+
+    void HadAdded(vector<string> bodyWords, string topic);
+
+    void HadBook(vector<string> bodyWords, string topic);
 };
 
 

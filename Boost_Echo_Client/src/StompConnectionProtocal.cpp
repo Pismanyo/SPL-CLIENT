@@ -20,23 +20,13 @@ void StompConnectionProtocal::run() {
     while (!terminate) {
 
         std::string answer;
-        // Get back an answer: by using the expected number of bytes (len bytes + newline delimiter)
-        // We could also use: connectionHandler.getline(answer) and then get the answer without the newline char at the end
         if (!connectionHandler->getLine(answer)) {
             std::cout << "Disconnected. Exiting...\n" << std::endl;
         }
         cout << answer << endl;
-//        stringstream split(answer);
-//        string token;
-//        vector<string> splitLines;
-//        while(getline(split,token,'\n'))
-//        splitLines.push_back(token);
+
         vector<string> splitLines=this->split(answer,'\n');
         string stompCommand=splitLines[0];
-//        for(string s: splitLines)
-//            cout<< s << endl;
-        // A C string must end with a 0 char delimiter.  When we filled the answer buffer from the socket
-        // we filled up to the \n char - we must make sure now that a 0 char is also present. So we truncate last character.
         if (stompCommand=="CONNECTED")
         {
             activeuser->setActive(true);
@@ -50,15 +40,6 @@ void StompConnectionProtocal::run() {
            this->gotMessageMessage(splitLines);
        }
 
-
-//        size_t pos = 0;
-//        std::string token;
-//        while ((pos = answer.find(spliter)) != std::string::npos) {
-//            token = s.substr(0, pos);
-//            std::cout << token << std::endl;
-//            answer.erase(0, pos + spliter.length());
-//        }
-//        std::cout << answer << std::endl;
     }
 }
 vector<string> StompConnectionProtocal::split(string tosplite,char denimator)
@@ -96,7 +77,8 @@ void StompConnectionProtocal:: gotReciteMessage(vector<string> splitLines)
         cout << "Unsubsribed successfil" << endl;
 
 
-    } else if (frameLines.at(0).compare("SUBSCRIBE")==0)
+    }
+    else if (frameLines.at(0).compare("SUBSCRIBE")==0)
     {
         vector<string> secondHeader=this->split(frameLines.at(1),':');
         string topic=secondHeader.at(1);
@@ -116,9 +98,7 @@ void StompConnectionProtocal:: gotReciteMessage(vector<string> splitLines)
 }
 
 void StompConnectionProtocal:: gotMessageMessage(vector<string> splitLines){
-  //  map<string,int>order;
-  //  order.insert({"subscription",1});
-    //order.insert({"destination",3});
+
     string topic;
     int subid;
     for(int i=1;i<=3;i++) {
@@ -129,10 +109,6 @@ void StompConnectionProtocal:: gotMessageMessage(vector<string> splitLines){
              topic =temp.at(1);
     }
 
-//    vector <string> secondLinestr=this->split(splitLines.at(1),':');
-//    int subid=stoi(secondLinestr.at(1));
-//    vector <string> thirdLinestr=this->split(splitLines.at(3),':');
-//    string topic =thirdLinestr.at(1);
 
     string body="";
     for (int i=5;i<splitLines.size();i++)
@@ -146,51 +122,16 @@ void StompConnectionProtocal:: gotMessageMessage(vector<string> splitLines){
     vector<string> bodyWords = this->split(body,' ');
     if (bodyWords.size()>=5&&body.find("wish to borrow") != string::npos) // bo wishes to boorow dune
     {
-        string book="";
-        for(int i=4;i<bodyWords.size();i++)
-        {
-            book=book+bodyWords.at(i)+" ";
-        }
-        book=book.substr(0,book.length()-1);
-        if(bodyWords.at(0).compare(activeuser->getUsername())==0)
-            activeuser->addbooksWantingToborrow(topic,book);
-
-        else if (activeuser->containsbook(topic,book)||activeuser->hasBorrowedbook(topic,book)){
-            Send ans(topic,activeuser->getUsername()+" has "+book);
-            this->send(ans.toString());
-        }
+        this->WishtoBorrow(bodyWords,topic);
 
     }
     else if (bodyWords.size()>=4&&bodyWords.at(1)==("has")&&bodyWords.at(2)=="book")//bob has book dune
     {
-        string book="";
-        for(int i=3;i<bodyWords.size();i++)
-        {
-            book=book+bodyWords.at(i)+" ";
-        }
-        book=book.substr(0,book.length()-1);
-        if(activeuser->hasbooksWantingToborrow(topic,book))
-        {
-            string userToTakeFrom=bodyWords.at(0);
-            activeuser->addBorrowedbook(topic,book,userToTakeFrom);
-            Send ans(topic,"Taking "+book+" from "+userToTakeFrom);
-            this->send(ans.toString());
-        }
+        this->HadBook(bodyWords,topic);
     }
     else if (bodyWords.size()>=4&&bodyWords.at(0)==activeuser->getUsername()&&bodyWords.at(1)==("has")&&bodyWords.at(2)=="added")//bob has added dune
     {
-        string book="";
-        for(int i=5;i<bodyWords.size();i++)
-        {
-            book=book+bodyWords.at(i)+" ";
-        }
-        book=book.substr(0,book.length()-1);
-        //  cout << book<< endl;
-        if(activeuser->containsbook(topic,book))
-            cout << activeuser->getUsername()+" already has book "+book<< endl;
-        else{
-            activeuser->addBook(topic,book);
-        }
+        this->HadAdded(bodyWords,topic);
     }
     else if (bodyWords.size()>=4&&bodyWords.at(0)==("Taking")) //Taking Dune from john
     {
@@ -236,3 +177,51 @@ void StompConnectionProtocal:: gotMessageMessage(vector<string> splitLines){
         this->send(ans.toString());
     }
 }
+void StompConnectionProtocal:: WishtoBorrow(vector<string> bodyWords,string topic)
+{
+    string book="";
+    for(int i=4;i<bodyWords.size();i++)
+    {
+        book=book+bodyWords.at(i)+" ";
+    }
+    book=book.substr(0,book.length()-1);
+    if(bodyWords.at(0).compare(activeuser->getUsername())==0)
+        activeuser->addbooksWantingToborrow(topic,book);
+
+    else if (activeuser->containsbook(topic,book)||activeuser->hasBorrowedbook(topic,book)){
+        Send ans(topic,activeuser->getUsername()+" has "+book);
+        this->send(ans.toString());
+    }
+}
+void StompConnectionProtocal:: HadBook(vector<string> bodyWords,string topic)
+{
+    string book="";
+    for(int i=3;i<bodyWords.size();i++)
+        book=book+bodyWords.at(i)+" ";
+    book=book.substr(0,book.length()-1);
+    if(activeuser->hasbooksWantingToborrow(topic,book))
+    {
+        string userToTakeFrom=bodyWords.at(0);
+        activeuser->addBorrowedbook(topic,book,userToTakeFrom);
+        Send ans(topic,"Taking "+book+" from "+userToTakeFrom);
+        this->send(ans.toString());
+    }
+}
+void StompConnectionProtocal:: HadAdded(vector<string> bodyWords,string topic)
+{
+    string book="";
+    for(int i=5;i<bodyWords.size();i++)
+    {
+        book=book+bodyWords.at(i)+" ";
+    }
+    book=book.substr(0,book.length()-1);
+    //  cout << book<< endl;
+    if(activeuser->containsbook(topic,book))
+        cout << activeuser->getUsername()+" already has book "+book<< endl;
+    else{
+        activeuser->addBook(topic,book);
+    }
+}
+
+
+
