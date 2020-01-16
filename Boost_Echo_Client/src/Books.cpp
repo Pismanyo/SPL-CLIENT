@@ -5,7 +5,9 @@
 #include "Books.h"
 
 Books::Books() {
+    this->subed= true;
 }
+
 
 bool Books::hasBook(string book) {
     if(this->books.count(book)>0)
@@ -86,4 +88,12 @@ string Books::allBooksOwned() {
     }
     ans=ans.substr(0,ans.length()-1);
     return ans;
+}
+
+bool Books::getsubed() {
+    return this->subed;
+}
+
+void Books::setsubbed(bool answer) {
+     subed=answer;
 }

@@ -22,11 +22,7 @@ void UserCommands::run() {
 
     string answer1;
     int counter;
-    bool terminate= false;
-    while (!terminate) {
-
-
-
+    while (!activeuser->getTerminate()) {
         getline(cin, answer1);
         vector<string> inputs=this->split(answer1,' ');
         counter=inputs.size();
@@ -117,6 +113,13 @@ void UserCommands::run() {
                 status(inputs[1]);
             }
         }
+        else if (inputs[0].compare("terminate") == 0) {
+
+            if (counter != 1)
+                cout << "incorrect input format" << endl;
+            this->terminate();
+            }
+        }
     }
 
 }
@@ -160,7 +163,11 @@ void UserCommands::subsribe(string topic) {
     cout<< std::to_string(id) << endl;
     this->stomp->send(ans.toString());
 }
+void UserCommands::terminate() {
+    this->activeuser->setTerminate(true);
+    this->finalTerminate;
 
+}
 
 void UserCommands::logout() {
     int recite = activeuser->numForRecite();
@@ -187,6 +194,11 @@ void UserCommands::unsubsribe(string topic) {
 }
 
 void UserCommands::add(string topic,string book) {
+    if(!activeuser->isSubsribed(topic))
+        activeuser->addBooksNotSubsribed(topic,book);
+    else {
+        activeuser->addBook(topic, book);
+    }
     Send ans(topic,(activeuser->getUsername()+" has added the book "+book));
     this->stomp->send(ans.toString());
 
@@ -205,6 +217,10 @@ void UserCommands::returnCommand(string topic,string book) {
     this->stomp->send(ans.toString());
 
 
+}
+
+bool UserCommands::getFinalTerminate() {
+    return this->finalTerminate;
 }
 
 

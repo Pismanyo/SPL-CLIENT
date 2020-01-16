@@ -40,6 +40,16 @@ connectionHandler.h
 ../src/Books.h
 ../src/Books.h
 
+../include/UserCommands.h
+iostream
+-
+mutex
+-
+thread
+-
+User.h
+-
+
 ../include/connectionHandler.h
 string
 -
@@ -70,9 +80,25 @@ map
 Book.h
 ../src/Book.h
 
-/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/StompConnectionProtocal.cpp
-mutex
+/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/UserCommands.cpp
+cstring
+-
+connectionHandler.h
+-
+Frame.h
 -
 StompConnectionProtocal.h
-/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/StompConnectionProtocal.h
+-
+UserCommands.h
+/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/UserCommands.h
+
+/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/echoClient.cpp
+stdlib.h
+-
+connectionHandler.h
+-
+StompConnectionProtocal.h
+-
+UserCommands.h
+/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/UserCommands.h
 

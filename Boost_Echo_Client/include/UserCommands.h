@@ -13,18 +13,18 @@ class UserCommands{
 private:
     User* activeuser;
     StompConnectionProtocal* stomp;
-    bool terminate;
+    bool finalTerminate;
 
 public:
     UserCommands (User* active,StompConnectionProtocal* stomp, Connect a);
-
+    bool getFinalTerminate();
     void run();
     void login(string version,string username,string password);
 
     void subsribe(string basicString);
     void logout();
     void status(string topic);
-
+    void terminate();
     void unsubsribe(string topic);
 
     void add(string topic,string book);

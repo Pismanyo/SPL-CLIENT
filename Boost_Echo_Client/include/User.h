@@ -28,18 +28,12 @@ private:
     string username;
     string password;
     map<string,Books> books;
-    //map<string,vector<string>> books;
-    //map<string,vector<string>> lookingForBorrowedBooks;
-   // map<string,map<string,string>> borrowedbooks;
-   // map<string,map<string,string>> awaitingReturn;
     map<int,string> pendingrecite;
     bool active;
-    int disconectid;
+    bool terminate;
     bool awaiting;
     map<int,string> IdToTopic;
     map<string,int> TopicToId;
-  //  map<int,string>pendingSubsribed;
-   // map<int,string>pendingUnsubsribed;
     int reciteconter;
 
 public:
@@ -53,6 +47,8 @@ public:
     void unsubsribe(int id);
     int numForRecite();
     string getUsername();
+    bool getTerminate();
+    void setTerminate(bool ans);
     string getPassword();
     bool isActive();
     void setActive(bool act);
@@ -71,6 +67,8 @@ public:
     string getRecitebyId(int reciteid);
     void removeBookRentedOut(string topic,string book);
     string printBooksInTopic(string topic);
+
+    void addBooksNotSubsribed(string topic, string book);
 };
 
 

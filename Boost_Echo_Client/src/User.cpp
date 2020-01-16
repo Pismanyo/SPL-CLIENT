@@ -15,6 +15,7 @@ string User::getPassword() {
 User::User(string username, string password) {
     this->username=username;
     active= false;
+    this->terminate= false;
     this->password=password;
 
 
@@ -77,10 +78,23 @@ bool User::isSubsribed(string topic) {
 void User::subsribe(string topic,int id) {
     this->TopicToId.insert({topic,id});
     this->IdToTopic.insert({id,topic});
-    this->books.insert({topic,Books()});
+    if( this->books.count(topic)>0) {
+        this->books[topic].setsubbed(true);
+    } else {
+        this->books.insert({topic, Books()});
+    }
     //books.insert({topic,vector<string>()});
    // lookingForBorrowedBooks.insert({topic,vector<string>()});
   //  borrowedbooks.insert({topic,map<string,string>()});
+}
+
+void User::addBooksNotSubsribed(string topic,string book) {
+    this->books.insert({topic,Books()});
+    this->addBook(topic,book);
+    this->books[topic].setsubbed(false);
+    //books.insert({topic,vector<string>()});
+    // lookingForBorrowedBooks.insert({topic,vector<string>()});
+    //  borrowedbooks.insert({topic,map<string,string>()});
 }
 
 int User::getidViaTopic(string topic) {
@@ -176,6 +190,15 @@ void User::removeBookRentedOut(string topic, string book) {
 
 string User::printBooksInTopic(string topic) {
     return this->books[topic].allBooksOwned();
+}
+
+bool User::getTerminate() {
+    return this->terminate;
+}
+
+void User::setTerminate(bool ans) {
+    this->terminate= ans;
+
 }
 
 

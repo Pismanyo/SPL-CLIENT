@@ -20,11 +20,14 @@ using std::map;
 
 class Books {
 private:
+    bool subed;
     map<string,Book> books;
     map<string,Book> booksBorrowed;
     map<string,Book> booksRentedOut;
     map<string,Book> booksWantingToborrow;
 public:
+    bool getsubed();
+    void setsubbed(bool answer);
     Books();
     bool hasBook(string book);
     bool hasbooksWantingToborrow(string book);

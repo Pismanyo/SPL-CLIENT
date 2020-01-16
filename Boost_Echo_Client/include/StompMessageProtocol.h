@@ -5,7 +5,6 @@
 #include <string>
 class StompProtocol{
 private:
-    bool terminate;
 public:
     std::string Process(std::string);
     bool shouldTerminate();

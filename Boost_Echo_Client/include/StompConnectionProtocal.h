@@ -12,7 +12,6 @@
 class StompConnectionProtocal {
 private:
     User* activeuser;
-    bool terminate;
     mutex _mutex;
     ConnectionHandler* connectionHandler;
 public:

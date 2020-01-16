@@ -17,17 +17,22 @@ void StompConnectionProtocal::setConnectionHandler(ConnectionHandler *connect) {
 
 void StompConnectionProtocal::run() {
     std::string spliter = ":";
-    while (!terminate) {
+    while (!activeuser->getTerminate()) {
 
         std::string answer;
         if (!connectionHandler->getLine(answer)) {
             std::cout << "Disconnected. Exiting...\n" << std::endl;
+            activeuser->setTerminate(true);
         }
         cout << answer << endl;
 
         vector<string> splitLines=this->split(answer,'\n');
         string stompCommand=splitLines[0];
-        if (stompCommand=="CONNECTED")
+        if (stompCommand=="ERROR")
+        {
+            activeuser->setTerminate(true);
+        }
+        else if (stompCommand=="CONNECTED")
         {
             activeuser->setActive(true);
             activeuser->setawait(false);
@@ -55,9 +60,13 @@ vector<string> StompConnectionProtocal::split(string tosplite,char denimator)
 
 bool StompConnectionProtocal::send(string frame) {
     std::lock_guard<std::mutex> lock (_mutex);
+    if(activeuser->getTerminate())
+    {
+        return false;
+    }
     if (!connectionHandler->sendLine(frame)) {
         std::cout << "Disconnected. Exiting...\n" << std::endl;
-        this->terminate= true;
+        activeuser->setTerminate(true);
         return false;
     }
     return true;
@@ -90,9 +99,7 @@ void StompConnectionProtocal:: gotReciteMessage(vector<string> splitLines)
     }
     else if (splitLines.at(0)=="DISCONNECT")
     {
-        terminate= true;
-        delete this->activeuser;
-
+         this->activeuser->setTerminate(true);
     }
 
 }
@@ -129,7 +136,7 @@ void StompConnectionProtocal:: gotMessageMessage(vector<string> splitLines){
     {
         this->HadBook(bodyWords,topic);
     }
-    else if (bodyWords.size()>=4&&bodyWords.at(0)==activeuser->getUsername()&&bodyWords.at(1)==("has")&&bodyWords.at(2)=="added")//bob has added dune
+    else if (bodyWords.size()>=4&&bodyWords.at(0)!=activeuser->getUsername()&&bodyWords.at(1)==("has")&&bodyWords.at(2)=="added")//bob has added dune
     {
         this->HadAdded(bodyWords,topic);
     }
@@ -217,11 +224,14 @@ void StompConnectionProtocal:: HadAdded(vector<string> bodyWords,string topic)
     }
     book=book.substr(0,book.length()-1);
     //  cout << book<< endl;
-    if(activeuser->containsbook(topic,book))
-        cout << activeuser->getUsername()+" already has book "+book<< endl;
-    else{
-        activeuser->addBook(topic,book);
+    if(activeuser->hasbooksWantingToborrow(topic,book))
+    {
+        string userToTakeFrom=bodyWords.at(0);
+        activeuser->addBorrowedbook(topic,book,userToTakeFrom);
+        Send ans(topic,"Taking "+book+" from "+userToTakeFrom);
+        this->send(ans.toString());
     }
+
 }
 
 

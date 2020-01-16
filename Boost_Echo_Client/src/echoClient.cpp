@@ -7,8 +7,8 @@
 * This code assumes that the server replies the exact text the client sent it (as opposed to the practical session example)
 */
 int main (int argc, char *argv[]) {
-    int rwe=0;
-   while(rwe==0) {
+    bool finalTerminate=false;
+   while(!finalTerminate) {
        string answer1;
        int counter;
        string inputs[5];
@@ -41,6 +41,11 @@ int main (int argc, char *argv[]) {
 
                th1.join();
                th2.join();
+               delete(connectionHandler);
+               delete(activeuser);
+               delete(stomp);
+               if(usercommands.getFinalTerminate())
+                   finalTerminate= true;
            }
 
        }
