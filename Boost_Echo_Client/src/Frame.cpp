@@ -112,8 +112,6 @@ string Disconnect::toString() {
     return a;
 }
 
-Disconnect::Disconnect(int recite) {
-
-
+Disconnect::Disconnect(int recite):recite(recite) {
 }
 

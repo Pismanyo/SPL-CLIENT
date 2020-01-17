@@ -117,20 +117,18 @@ void UserCommands::run() {
 
             if (counter != 1)
                 cout << "incorrect input format" << endl;
-            this->terminate();
+            else {
+                this->terminate();
             }
+        }
         }
     }
 
-}
-
 UserCommands::UserCommands(User *active,StompConnectionProtocal* stomp,Connect a) {
-    this->activeuser=active;
-    this->stomp=stomp;
+    this->activeuser = active;
+    this->stomp = stomp;
     this->stomp->send(a.toString());
-
-
-
+    this->finalTerminate = false;
 }
 
 void UserCommands::login(string version, string username, string password) {
@@ -148,7 +146,7 @@ void UserCommands::login(string version, string username, string password) {
         Connect ans("1.2",host,username,password);
         activeuser->setuserandpass(username,password);
         StompConnectionProtocal* stomp =new StompConnectionProtocal(activeuser,connectionHandler);
-         std::thread th2(&StompConnectionProtocal::run,stomp);
+//         std::thread th2(&StompConnectionProtocal::run,stomp);
        // StompConnectionProtocal stomp (activeuser,connectionHandler);
       //  std::thread th2(&StompConnectionProtocal::run,stomp);
     }
@@ -165,13 +163,18 @@ void UserCommands::subsribe(string topic) {
 }
 void UserCommands::terminate() {
     this->activeuser->setTerminate(true);
-    this->finalTerminate;
+    this->setFinalTerminate(true);
+    int receipt =activeuser->numForRecite();
+    Disconnect terminate(receipt);
+    activeuser->addPendingrecite(receipt, terminate.toString());
+    this->stomp->send(terminate.toString());
 
 }
 
 void UserCommands::logout() {
+    this->activeuser->setTerminate(true);
     int recite = activeuser->numForRecite();
-    Disconnect byebye=(recite);
+    Disconnect byebye(recite);
     activeuser->addPendingrecite(recite, byebye.toString());
     this->stomp->send(byebye.toString());
 }
@@ -221,6 +224,10 @@ void UserCommands::returnCommand(string topic,string book) {
 
 bool UserCommands::getFinalTerminate() {
     return this->finalTerminate;
+}
+
+void UserCommands::setFinalTerminate(bool terminate) {
+    this->finalTerminate = terminate;
 }
 
 

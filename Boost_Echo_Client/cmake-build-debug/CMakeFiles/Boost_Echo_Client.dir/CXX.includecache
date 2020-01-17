@@ -6,6 +6,28 @@
 
 #IncludeRegexTransform: 
 
+../include/Book.h
+string
+-
+iostream
+-
+vector
+-
+map
+-
+
+../include/Books.h
+string
+-
+iostream
+-
+vector
+-
+map
+-
+Book.h
+../include/Book.h
+
 ../include/Frame.h
 string
 -
@@ -37,8 +59,8 @@ Frame.h
 ../include/Frame.h
 connectionHandler.h
 ../include/connectionHandler.h
-../src/Books.h
-../src/Books.h
+Books.h
+../include/Books.h
 
 ../include/UserCommands.h
 iostream
@@ -58,29 +80,7 @@ iostream
 boost/asio.hpp
 -
 
-../src/Book.h
-string
--
-iostream
--
-vector
--
-map
--
-
-../src/Books.h
-string
--
-iostream
--
-vector
--
-map
--
-Book.h
-../src/Book.h
-
-/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/UserCommands.cpp
+/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/UserCommands.cpp
 cstring
 -
 connectionHandler.h
@@ -90,15 +90,5 @@ Frame.h
 StompConnectionProtocal.h
 -
 UserCommands.h
-/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/UserCommands.h
-
-/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/echoClient.cpp
-stdlib.h
--
-connectionHandler.h
--
-StompConnectionProtocal.h
--
-UserCommands.h
-/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/UserCommands.h
+/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/UserCommands.h
 

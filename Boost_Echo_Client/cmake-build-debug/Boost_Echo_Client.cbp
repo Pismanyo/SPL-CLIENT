@@ -8,33 +8,33 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug"/>
+				<Option working_dir="/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug"/>
+				<Option working_dir="/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Boost_Echo_Client">
-				<Option output="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Boost_Echo_Client" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug"/>
+				<Option output="/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Boost_Echo_Client" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/include"/>
+					<Add directory="/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/include"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -45,20 +45,20 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 Boost_Echo_Client"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 Boost_Echo_Client"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Boost_Echo_Client/fast">
-				<Option output="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Boost_Echo_Client" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug"/>
+				<Option output="/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Boost_Echo_Client" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/include"/>
+					<Add directory="/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/include"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -69,78 +69,78 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 Boost_Echo_Client/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 Boost_Echo_Client/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug"/>
+				<Option working_dir="/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/include/Frame.h">
+		<Unit filename="/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/include/Book.h">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/include/StompConnectionHandler.h">
+		<Unit filename="/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/include/Books.h">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/include/StompConnectionProtocal.h">
+		<Unit filename="/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/include/Frame.h">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/include/StompMessageEncoderDecoder.h">
+		<Unit filename="/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/include/StompConnectionHandler.h">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/include/StompMessageProtocol.h">
+		<Unit filename="/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/include/StompConnectionProtocal.h">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/include/User.h">
+		<Unit filename="/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/include/StompMessageEncoderDecoder.h">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/include/UserCommands.h">
+		<Unit filename="/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/include/StompMessageProtocol.h">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/include/connectionHandler.h">
+		<Unit filename="/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/include/User.h">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/Book.cpp">
+		<Unit filename="/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/include/UserCommands.h">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/Book.h">
+		<Unit filename="/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/include/connectionHandler.h">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/Books.cpp">
+		<Unit filename="/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/Book.cpp">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/Books.h">
+		<Unit filename="/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/Books.cpp">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/Frame.cpp">
+		<Unit filename="/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/Frame.cpp">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/StompConnectionProtocal.cpp">
+		<Unit filename="/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/StompConnectionProtocal.cpp">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/User.cpp">
+		<Unit filename="/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/User.cpp">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/UserCommands.cpp">
+		<Unit filename="/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/UserCommands.cpp">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/connectionHandler.cpp">
+		<Unit filename="/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/connectionHandler.cpp">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/echoClient.cpp">
+		<Unit filename="/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/echoClient.cpp">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/CMakeLists.txt">
+		<Unit filename="/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

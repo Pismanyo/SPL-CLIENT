@@ -12,7 +12,7 @@
 #include <boost/lambda/bind.hpp>
 #include "Frame.h"
 #include "connectionHandler.h"
-#include "../src/Books.h"
+#include "Books.h"
 
 using std::string;
 using std::cin;

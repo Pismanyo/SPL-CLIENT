@@ -20,7 +20,7 @@ add_executable(Boost_Echo_Client
         src/Frame.cpp
         src/StompConnectionProtocal.cpp
         src/User.cpp
-        src/UserCommands.cpp src/Books.cpp src/Books.h src/Book.cpp src/Book.h)
+        src/UserCommands.cpp src/Books.cpp include/Books.h src/Book.cpp include/Book.h)
 
 
 target_link_libraries(Boost_Echo_Client Boost::date_time Boost::filesystem

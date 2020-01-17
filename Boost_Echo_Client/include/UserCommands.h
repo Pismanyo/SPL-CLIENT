@@ -34,6 +34,8 @@ public:
     void returnCommand(string topic,string book);
 
     vector<string> split(string tosplite, char denimator);
+
+    void setFinalTerminate(bool terminate);
 };
 
 

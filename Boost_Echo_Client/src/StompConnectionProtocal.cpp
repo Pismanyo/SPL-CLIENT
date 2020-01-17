@@ -6,7 +6,7 @@
 #include "StompConnectionProtocal.h"
 
 StompConnectionProtocal::StompConnectionProtocal(User* user,ConnectionHandler* connectionHandler) {
-    this->terminate= false;
+//    this->terminate= false;
     this->activeuser=user;
     this->connectionHandler=connectionHandler;
 }
@@ -23,28 +23,23 @@ void StompConnectionProtocal::run() {
         if (!connectionHandler->getLine(answer)) {
             std::cout << "Disconnected. Exiting...\n" << std::endl;
             activeuser->setTerminate(true);
-        }
-        cout << answer << endl;
+        } else {
+            cout << answer << endl;
 
-        vector<string> splitLines=this->split(answer,'\n');
-        string stompCommand=splitLines[0];
-        if (stompCommand=="ERROR")
-        {
-            activeuser->setTerminate(true);
-        }
-        else if (stompCommand=="CONNECTED")
-        {
-            activeuser->setActive(true);
-            activeuser->setawait(false);
-        }
-       else if(stompCommand=="RECEIPT") {
-           this->gotReciteMessage(splitLines);
-        }
-       else if(stompCommand=="MESSAGE")
-        {
-           this->gotMessageMessage(splitLines);
-       }
+            vector<string> splitLines = this->split(answer, '\n');
+            string stompCommand = splitLines[0];
+            if (stompCommand == "ERROR") {
+                activeuser->setTerminate(true);
+            } else if (stompCommand == "CONNECTED") {
+                activeuser->setActive(true);
+                activeuser->setawait(false);
+            } else if (stompCommand == "RECEIPT") {
+                this->gotReciteMessage(splitLines);
+            } else if (stompCommand == "MESSAGE") {
+                this->gotMessageMessage(splitLines);
+            }
 
+        }
     }
 }
 vector<string> StompConnectionProtocal::split(string tosplite,char denimator)
@@ -60,10 +55,10 @@ vector<string> StompConnectionProtocal::split(string tosplite,char denimator)
 
 bool StompConnectionProtocal::send(string frame) {
     std::lock_guard<std::mutex> lock (_mutex);
-    if(activeuser->getTerminate())
-    {
-        return false;
-    }
+//    if(activeuser->getTerminate())
+//    {
+//        return false;
+//    }
     if (!connectionHandler->sendLine(frame)) {
         std::cout << "Disconnected. Exiting...\n" << std::endl;
         activeuser->setTerminate(true);
