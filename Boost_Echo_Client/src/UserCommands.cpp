@@ -36,83 +36,85 @@ void UserCommands::run() {
     bool toTerminate= false;
     while (!toTerminate) {
         getline(cin, answer1);
-        vector<string> inputs = this->split(answer1, ' ');
-        counter = inputs.size();
-        if(counter>0) {
-            if (inputs[0].compare("login") == 0) {
-                if (activeuser->isActive())
-                    cout << "Already connected to different user" << endl;
-            } else if (inputs[0].compare("join") == 0) {
-                if (counter != 2)
-                    cout << "incorrect input format" << endl;
-                else if (!activeuser->isActive())
-                    cout << "not connected to a user" << endl;
+        if(!activeuser->getTerminate()) {
+            vector<string> inputs = this->split(answer1, ' ');
+            counter = inputs.size();
+            if (counter > 0) {
+                if (inputs[0].compare("login") == 0) {
+                    if (activeuser->isActive())
+                        cout << "Already connected to different user" << endl;
+                } else if (inputs[0].compare("join") == 0) {
+                    if (counter != 2)
+                        cout << "incorrect input format" << endl;
+                    else if (!activeuser->isActive())
+                        cout << "not connected to a user" << endl;
 
-                else {
-                    subsribe(inputs[1]);
-                }
+                    else {
+                        subsribe(inputs[1]);
+                    }
 
-            } else if (inputs[0].compare("exit") == 0) {
+                } else if (inputs[0].compare("exit") == 0) {
 
-                if (counter != 2)
-                    cout << "incorrect input format" << endl;
-                else if (!activeuser->isActive())
-                    cout << "not connected to a user" << endl;
-                else {
-                    unsubsribe(inputs[1]);
-                }
-            } else if (inputs[0].compare("borrow") == 0) {
+                    if (counter != 2)
+                        cout << "incorrect input format" << endl;
+                    else if (!activeuser->isActive())
+                        cout << "not connected to a user" << endl;
+                    else {
+                        unsubsribe(inputs[1]);
+                    }
+                } else if (inputs[0].compare("borrow") == 0) {
 
-                if (counter < 2)
-                    cout << "incorrect input format" << endl;
-                else if (!activeuser->isActive())
-                    cout << "not connected to a user" << endl;
+                    if (counter < 2)
+                        cout << "incorrect input format" << endl;
+                    else if (!activeuser->isActive())
+                        cout << "not connected to a user" << endl;
 
-                else {
-                    for (int i = 3; i < counter; i++)
-                        inputs.at(2) += " " + inputs.at(i);
-                    borrow(inputs[1], inputs[2]);
-                }
-            } else if (inputs[0].compare("logout") == 0) {
+                    else {
+                        for (int i = 3; i < counter; i++)
+                            inputs.at(2) += " " + inputs.at(i);
+                        borrow(inputs[1], inputs[2]);
+                    }
+                } else if (inputs[0].compare("logout") == 0) {
 
-                if (counter != 1)
-                    cout << "incorrect input format" << endl;
-                else if (!activeuser->isActive())
-                    cout << "not connected to a user" << endl;
-                else {
-                    logout();
-                }
+                    if (counter != 1)
+                        cout << "incorrect input format" << endl;
+                    else if (!activeuser->isActive())
+                        cout << "not connected to a user" << endl;
+                    else {
+                        logout();
+                    }
 
-            } else if (inputs[0].compare("add") == 0) {
+                } else if (inputs[0].compare("add") == 0) {
 
-                if (counter < 3)
-                    cout << "incorrect input format" << endl;
-                else if (!activeuser->isActive())
-                    cout << "not connected to a user" << endl;
-                else {
-                    for (int i = 3; i < counter; i++)
-                        inputs.at(2) += " " + inputs.at(i);
-                    add(inputs[1], inputs[2]);
-                }
-            } else if (inputs[0].compare("return") == 0) {
+                    if (counter < 3)
+                        cout << "incorrect input format" << endl;
+                    else if (!activeuser->isActive())
+                        cout << "not connected to a user" << endl;
+                    else {
+                        for (int i = 3; i < counter; i++)
+                            inputs.at(2) += " " + inputs.at(i);
+                        add(inputs[1], inputs[2]);
+                    }
+                } else if (inputs[0].compare("return") == 0) {
 
-                if (counter < 3)
-                    cout << "incorrect input format" << endl;
-                else if (!activeuser->isActive())
-                    cout << "not connected to a user" << endl;
-                else {
-                    for (int i = 3; i < counter; i++)
-                        inputs.at(2) += " " + inputs.at(i);
-                    returnCommand(inputs[1], inputs[2]);
-                }
-            } else if (inputs[0].compare("status") == 0) {
+                    if (counter < 3)
+                        cout << "incorrect input format" << endl;
+                    else if (!activeuser->isActive())
+                        cout << "not connected to a user" << endl;
+                    else {
+                        for (int i = 3; i < counter; i++)
+                            inputs.at(2) += " " + inputs.at(i);
+                        returnCommand(inputs[1], inputs[2]);
+                    }
+                } else if (inputs[0].compare("status") == 0) {
 
-                if (counter != 2)
-                    cout << "incorrect input format" << endl;
-                else if (!activeuser->isActive())
-                    cout << "not connected to a user" << endl;
-                else {
-                    status(inputs[1]);
+                    if (counter != 2)
+                        cout << "incorrect input format" << endl;
+                    else if (!activeuser->isActive())
+                        cout << "not connected to a user" << endl;
+                    else {
+                        status(inputs[1]);
+                    }
                 }
             }
         }

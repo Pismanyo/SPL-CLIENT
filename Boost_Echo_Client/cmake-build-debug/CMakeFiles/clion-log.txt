@@ -1,4 +1,4 @@
-/users/studs/bsc/2020/liordu/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.5662.56/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/usr/bin/make -DCMAKE_C_COMPILER=/usr/bin/cc -DCMAKE_CXX_COMPILER=/usr/bin/c++ -G "CodeBlocks - Unix Makefiles" /users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client
+/snap/clion/99/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client
 -- Configuring done
 -- Generating done
--- Build files have been written to: /users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug
+-- Build files have been written to: /home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/cmake-build-debug

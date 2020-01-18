@@ -3,11 +3,11 @@
 
 CMakeFiles/Boost_Echo_Client.dir/src/Book.cpp.o
  ../include/Book.h
- /users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/Book.cpp
+ /home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/Book.cpp
 CMakeFiles/Boost_Echo_Client.dir/src/Books.cpp.o
  ../include/Book.h
  ../include/Books.h
- /users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/Books.cpp
+ /home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/Books.cpp
 CMakeFiles/Boost_Echo_Client.dir/src/ClientMain.cpp.o
  ../include/Book.h
  ../include/Books.h
@@ -16,10 +16,10 @@ CMakeFiles/Boost_Echo_Client.dir/src/ClientMain.cpp.o
  ../include/User.h
  ../include/UserCommands.h
  ../include/connectionHandler.h
- /users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/ClientMain.cpp
+ /home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/ClientMain.cpp
 CMakeFiles/Boost_Echo_Client.dir/src/Frame.cpp.o
  ../include/Frame.h
- /users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/Frame.cpp
+ /home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/Frame.cpp
 CMakeFiles/Boost_Echo_Client.dir/src/StompConnectionProtocal.cpp.o
  ../include/Book.h
  ../include/Books.h
@@ -27,14 +27,14 @@ CMakeFiles/Boost_Echo_Client.dir/src/StompConnectionProtocal.cpp.o
  ../include/StompConnectionProtocal.h
  ../include/User.h
  ../include/connectionHandler.h
- /users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/StompConnectionProtocal.cpp
+ /home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/StompConnectionProtocal.cpp
 CMakeFiles/Boost_Echo_Client.dir/src/User.cpp.o
  ../include/Book.h
  ../include/Books.h
  ../include/Frame.h
  ../include/User.h
  ../include/connectionHandler.h
- /users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/User.cpp
+ /home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/User.cpp
 CMakeFiles/Boost_Echo_Client.dir/src/UserCommands.cpp.o
  ../include/Book.h
  ../include/Books.h
@@ -43,7 +43,7 @@ CMakeFiles/Boost_Echo_Client.dir/src/UserCommands.cpp.o
  ../include/User.h
  ../include/UserCommands.h
  ../include/connectionHandler.h
- /users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/UserCommands.cpp
+ /home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/UserCommands.cpp
 CMakeFiles/Boost_Echo_Client.dir/src/connectionHandler.cpp.o
  ../include/connectionHandler.h
- /users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/connectionHandler.cpp
+ /home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/connectionHandler.cpp
