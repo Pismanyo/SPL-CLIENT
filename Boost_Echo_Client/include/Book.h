@@ -1,6 +1,3 @@
-//
-// Created by liordu@wincs.cs.bgu.ac.il on 13/01/2020.
-//
 
 #ifndef BOOST_ECHO_CLIENT_BOOK_H
 #define BOOST_ECHO_CLIENT_BOOK_H
@@ -20,7 +17,7 @@ using std::map;
 class Book {
 private:
     string name;
-    string borrowedFrom;
+    string borrowedFrom{};
     bool boorowed;
 public:
     Book();
@@ -29,11 +26,6 @@ public:
     string getName();
     string getUserBorrowedFrom();
     bool isBorrowed();
-
-
-
-
 };
 
-
-#endif //BOOST_ECHO_CLIENT_BOOK_H
+#endif

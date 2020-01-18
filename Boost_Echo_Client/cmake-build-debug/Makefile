@@ -177,6 +177,33 @@ src/Books.cpp.s:
 	$(MAKE) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/Books.cpp.s
 .PHONY : src/Books.cpp.s
 
+src/ClientMain.o: src/ClientMain.cpp.o
+
+.PHONY : src/ClientMain.o
+
+# target to build an object file
+src/ClientMain.cpp.o:
+	$(MAKE) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/ClientMain.cpp.o
+.PHONY : src/ClientMain.cpp.o
+
+src/ClientMain.i: src/ClientMain.cpp.i
+
+.PHONY : src/ClientMain.i
+
+# target to preprocess a source file
+src/ClientMain.cpp.i:
+	$(MAKE) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/ClientMain.cpp.i
+.PHONY : src/ClientMain.cpp.i
+
+src/ClientMain.s: src/ClientMain.cpp.s
+
+.PHONY : src/ClientMain.s
+
+# target to generate assembly for a file
+src/ClientMain.cpp.s:
+	$(MAKE) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/ClientMain.cpp.s
+.PHONY : src/ClientMain.cpp.s
+
 src/Frame.o: src/Frame.cpp.o
 
 .PHONY : src/Frame.o
@@ -312,33 +339,6 @@ src/connectionHandler.cpp.s:
 	$(MAKE) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/connectionHandler.cpp.s
 .PHONY : src/connectionHandler.cpp.s
 
-src/echoClient.o: src/echoClient.cpp.o
-
-.PHONY : src/echoClient.o
-
-# target to build an object file
-src/echoClient.cpp.o:
-	$(MAKE) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/echoClient.cpp.o
-.PHONY : src/echoClient.cpp.o
-
-src/echoClient.i: src/echoClient.cpp.i
-
-.PHONY : src/echoClient.i
-
-# target to preprocess a source file
-src/echoClient.cpp.i:
-	$(MAKE) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/echoClient.cpp.i
-.PHONY : src/echoClient.cpp.i
-
-src/echoClient.s: src/echoClient.cpp.s
-
-.PHONY : src/echoClient.s
-
-# target to generate assembly for a file
-src/echoClient.cpp.s:
-	$(MAKE) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/echoClient.cpp.s
-.PHONY : src/echoClient.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -354,6 +354,9 @@ help:
 	@echo "... src/Books.o"
 	@echo "... src/Books.i"
 	@echo "... src/Books.s"
+	@echo "... src/ClientMain.o"
+	@echo "... src/ClientMain.i"
+	@echo "... src/ClientMain.s"
 	@echo "... src/Frame.o"
 	@echo "... src/Frame.i"
 	@echo "... src/Frame.s"
@@ -369,9 +372,6 @@ help:
 	@echo "... src/connectionHandler.o"
 	@echo "... src/connectionHandler.i"
 	@echo "... src/connectionHandler.s"
-	@echo "... src/echoClient.o"
-	@echo "... src/echoClient.i"
-	@echo "... src/echoClient.s"
 .PHONY : help
 
 

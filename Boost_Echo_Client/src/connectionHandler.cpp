@@ -1,4 +1,4 @@
-#include <connectionHandler.h>
+#include "connectionHandler.h"
  
 using boost::asio::ip::tcp;
 
@@ -8,14 +8,14 @@ using std::cerr;
 using std::endl;
 using std::string;
  
-ConnectionHandler::ConnectionHandler(string host, short port):host_(host), port_(port), io_service_(), socket_(io_service_){}
+connectionHandler::connectionHandler(string host, short port): host_(host), port_(port), io_service_(), socket_(io_service_){}
 
     
-ConnectionHandler::~ConnectionHandler() {
+connectionHandler::~connectionHandler() {
     close();
 }
  
-bool ConnectionHandler::connect() {
+bool connectionHandler::connect() {
     std::cout << "Starting connect to " 
         << host_ << ":" << port_ << std::endl;
     try {
@@ -32,7 +32,7 @@ bool ConnectionHandler::connect() {
     return true;
 }
  
-bool ConnectionHandler::getBytes(char bytes[], unsigned int bytesToRead) {
+bool connectionHandler::getBytes(char bytes[], unsigned int bytesToRead) {
     size_t tmp = 0;
 	boost::system::error_code error;
     try {
@@ -48,7 +48,7 @@ bool ConnectionHandler::getBytes(char bytes[], unsigned int bytesToRead) {
     return true;
 }
 
-bool ConnectionHandler::sendBytes(const char bytes[], int bytesToWrite) {
+bool connectionHandler::sendBytes(const char bytes[], int bytesToWrite) {
     int tmp = 0;
 	boost::system::error_code error;
     try {
@@ -64,16 +64,16 @@ bool ConnectionHandler::sendBytes(const char bytes[], int bytesToWrite) {
     return true;
 }
  
-bool ConnectionHandler::getLine(std::string& line) {
+bool connectionHandler::getLine(std::string& line) {
     return getFrameAscii(line, '\0');
 }
 
-bool ConnectionHandler::sendLine(std::string& line) {
+bool connectionHandler::sendLine(std::string& line) {
     return sendFrameAscii(line, '\0');
 }
  
 
-bool ConnectionHandler::getFrameAscii(std::string& frame, char delimiter) {
+bool connectionHandler::getFrameAscii(std::string& frame, char delimiter) {
     char ch;
     // Stop when we encounter the null character.
     // Notice that the null character is not appended to the frame string.
@@ -95,14 +95,14 @@ bool ConnectionHandler::getFrameAscii(std::string& frame, char delimiter) {
 }
  
  
-bool ConnectionHandler::sendFrameAscii(const std::string& frame, char delimiter) {
+bool connectionHandler::sendFrameAscii(const std::string& frame, char delimiter) {
 	bool result=sendBytes(frame.c_str(),frame.length());
 	if(!result) return false;
 	return sendBytes(&delimiter,1);
 }
  
 // Close down the connection properly.
-void ConnectionHandler::close() {
+void connectionHandler::close() {
     try{
         socket_.close();
     } catch (...) {

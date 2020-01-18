@@ -1,6 +1,3 @@
-//
-// Created by liordu@wincs.cs.bgu.ac.il on 13/01/2020.
-//
 
 #ifndef BOOST_ECHO_CLIENT_BOOKS_H
 #define BOOST_ECHO_CLIENT_BOOKS_H
@@ -20,13 +17,12 @@ using std::map;
 
 class Books {
 private:
-    bool subed;
-    map<string,Book> books;
-    map<string,Book> booksBorrowed;
-    map<string,Book> booksRentedOut;
-    map<string,Book> booksWantingToborrow;
+    bool subed{};
+    map<string,Book> books{};
+    map<string,Book> booksBorrowed{};
+    map<string,Book> booksRentedOut{};
+    map<string,Book> booksWantingToborrow{};
 public:
-    bool getsubed();
     void setsubbed(bool answer);
     Books();
     bool hasBook(string book);
@@ -44,9 +40,7 @@ public:
     Book getBookBorrwed(string);
     Book getBookRented(string);
     string allBooksOwned();
-
-
 };
 
 
-#endif //BOOST_ECHO_CLIENT_BOOKS_H
+#endif

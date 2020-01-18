@@ -1,36 +1,16 @@
-//
-// Created by liordu@wincs.cs.bgu.ac.il on 13/01/2020.
-//
 
 #include "Book.h"
 
+Book::Book() : name(""), boorowed(false) {}
 
-Book::Book(string name) {
-    this->boorowed=false;
-    this->name=name;
-    borrowedFrom= false;
-    this->borrowedFrom="";
+Book::Book(string name): name(name), boorowed(false){this->borrowedFrom = "";}
 
-}
+Book::Book(string name, string username) : name(name), boorowed(true){this->borrowedFrom=username;}
 
-Book::Book(string name, string username) {
-    this->boorowed=true;
-    this->name=name;
-    this->borrowedFrom=username;
-}
+string Book::getName() {return this->name;}
 
-string Book::getName() {
-    return this->name;
-}
+string Book::getUserBorrowedFrom() {return borrowedFrom;}
 
-string Book::getUserBorrowedFrom() {
-    return borrowedFrom;
-}
+bool Book::isBorrowed() {return boorowed;}
 
-bool Book::isBorrowed() {
-    return boorowed;
-}
 
-Book::Book() {
-
-}

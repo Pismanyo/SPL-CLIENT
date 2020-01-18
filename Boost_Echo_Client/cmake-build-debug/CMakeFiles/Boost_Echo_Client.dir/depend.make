@@ -8,6 +8,15 @@ CMakeFiles/Boost_Echo_Client.dir/src/Books.cpp.o: ../include/Book.h
 CMakeFiles/Boost_Echo_Client.dir/src/Books.cpp.o: ../include/Books.h
 CMakeFiles/Boost_Echo_Client.dir/src/Books.cpp.o: ../src/Books.cpp
 
+CMakeFiles/Boost_Echo_Client.dir/src/ClientMain.cpp.o: ../include/Book.h
+CMakeFiles/Boost_Echo_Client.dir/src/ClientMain.cpp.o: ../include/Books.h
+CMakeFiles/Boost_Echo_Client.dir/src/ClientMain.cpp.o: ../include/Frame.h
+CMakeFiles/Boost_Echo_Client.dir/src/ClientMain.cpp.o: ../include/StompConnectionProtocal.h
+CMakeFiles/Boost_Echo_Client.dir/src/ClientMain.cpp.o: ../include/User.h
+CMakeFiles/Boost_Echo_Client.dir/src/ClientMain.cpp.o: ../include/UserCommands.h
+CMakeFiles/Boost_Echo_Client.dir/src/ClientMain.cpp.o: ../include/connectionHandler.h
+CMakeFiles/Boost_Echo_Client.dir/src/ClientMain.cpp.o: ../src/ClientMain.cpp
+
 CMakeFiles/Boost_Echo_Client.dir/src/Frame.cpp.o: ../include/Frame.h
 CMakeFiles/Boost_Echo_Client.dir/src/Frame.cpp.o: ../src/Frame.cpp
 
@@ -37,13 +46,4 @@ CMakeFiles/Boost_Echo_Client.dir/src/UserCommands.cpp.o: ../src/UserCommands.cpp
 
 CMakeFiles/Boost_Echo_Client.dir/src/connectionHandler.cpp.o: ../include/connectionHandler.h
 CMakeFiles/Boost_Echo_Client.dir/src/connectionHandler.cpp.o: ../src/connectionHandler.cpp
-
-CMakeFiles/Boost_Echo_Client.dir/src/echoClient.cpp.o: ../include/Book.h
-CMakeFiles/Boost_Echo_Client.dir/src/echoClient.cpp.o: ../include/Books.h
-CMakeFiles/Boost_Echo_Client.dir/src/echoClient.cpp.o: ../include/Frame.h
-CMakeFiles/Boost_Echo_Client.dir/src/echoClient.cpp.o: ../include/StompConnectionProtocal.h
-CMakeFiles/Boost_Echo_Client.dir/src/echoClient.cpp.o: ../include/User.h
-CMakeFiles/Boost_Echo_Client.dir/src/echoClient.cpp.o: ../include/UserCommands.h
-CMakeFiles/Boost_Echo_Client.dir/src/echoClient.cpp.o: ../include/connectionHandler.h
-CMakeFiles/Boost_Echo_Client.dir/src/echoClient.cpp.o: ../src/echoClient.cpp
 

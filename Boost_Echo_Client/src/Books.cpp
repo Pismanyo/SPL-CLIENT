@@ -1,6 +1,3 @@
-//
-// Created by liordu@wincs.cs.bgu.ac.il on 13/01/2020.
-//
 
 #include "Books.h"
 
@@ -75,19 +72,11 @@ void Books::removebooksWantingToborrow(string book) {
 string Books::allBooksOwned() {
     string ans="";
     for(auto it = books.begin(); it != books.end(); ++it)
-    {
         ans+=it->first+",";
-    }
     for(auto it = booksBorrowed.begin(); it != booksBorrowed.end(); ++it)
-    {
         ans+=it->first+",";
-    }
     ans=ans.substr(0,ans.length()-1);
     return ans;
-}
-
-bool Books::getsubed() {
-    return this->subed;
 }
 
 void Books::setsubbed(bool answer) {

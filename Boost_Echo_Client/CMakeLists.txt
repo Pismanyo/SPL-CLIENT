@@ -13,7 +13,7 @@ add_executable(Boost_Echo_Client
         include/User.h
         include/UserCommands.h
         src/connectionHandler.cpp
-        src/echoClient.cpp
+        src/ClientMain.cpp
         src/Frame.cpp
         src/StompConnectionProtocal.cpp
         src/User.cpp

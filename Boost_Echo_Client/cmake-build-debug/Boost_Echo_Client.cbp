@@ -113,6 +113,9 @@
 		<Unit filename="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/Books.cpp">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
+		<Unit filename="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/ClientMain.cpp">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
 		<Unit filename="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/Frame.cpp">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
@@ -126,9 +129,6 @@
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
 		<Unit filename="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/connectionHandler.cpp">
-			<Option target="Boost_Echo_Client"/>
-		</Unit>
-		<Unit filename="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/echoClient.cpp">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
 		<Unit filename="/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/CMakeLists.txt">

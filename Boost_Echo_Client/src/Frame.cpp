@@ -1,7 +1,5 @@
 
-
-#include <Frame.h>
-
+#include "Frame.h"
 
 using namespace std;
 
@@ -23,18 +21,13 @@ string Connect::toString() {
     a+=this->password;
     a+='\n';
     a+='\n';
-  //  a+='\0';
-
     return a;
 }
 
-Connect::Connect(string version, string host, string username, string password) {
-    this->version=version;
-    this->username=username;
-    this->password=password;
-    this->host=host;
-}
+Connect::Connect(string version, string host, string username, string password) : version(version),username(username)
+,password(password),host(host){}
 
+Send::Send(string topic, string message): topic(topic),message(message) {}
 
 string Send::toString() {
     string a="SEND";
@@ -45,21 +38,10 @@ string Send::toString() {
     a+='\n';
     a+=this->message;
     a+='\n';
-   // a+='\0';
     return a;
 }
 
-Send::Send(string topic, string message) {
- this->topic=topic;
- this->message=message;
-}
-
-Subscribe::Subscribe(string topic, int id, int recite) {
-    this->topic=topic;
-    this->id=id;
-    this->recite=recite;
-
-}
+Subscribe::Subscribe(string topic, int id, int recite): topic(topic),id(id),recite(recite) {}
 
 string Subscribe::toString() {
     string a="SUBSCRIBE";
@@ -74,15 +56,10 @@ string Subscribe::toString() {
     a+=std::to_string(this->recite);
     a+='\n';
     a+='\n';
- //   a+='\0';
-
     return a;
 }
 
-Unsubscribe::Unsubscribe( int id) {
-    this->id=id;
-
-}
+Unsubscribe::Unsubscribe( int id): id(id) {}
 
 string Unsubscribe::toString() {
     string a="UNSUBSCRIBE";
@@ -91,12 +68,10 @@ string Unsubscribe::toString() {
     a+=std::to_string(this->id);
     a+='\n';
     a+='\n';
-   // a+='\0';
-
-
-
     return a;
 }
+
+Disconnect::Disconnect(int recite):recite(recite) {}
 
 string Disconnect::toString() {
     string a="DISCONNECT";
@@ -105,13 +80,7 @@ string Disconnect::toString() {
     a+=std::to_string(this->recite);
     a+='\n';
     a+='\n';
-  //  a+='\0';
-
-
-
     return a;
 }
 
-Disconnect::Disconnect(int recite):recite(recite) {
-}
 

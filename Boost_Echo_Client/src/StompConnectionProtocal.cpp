@@ -1,26 +1,20 @@
-//
-// Created by joni on 12/01/2020.
-//
 
 #include <mutex>
 #include "StompConnectionProtocal.h"
 
-StompConnectionProtocal::StompConnectionProtocal(User* user,ConnectionHandler* connectionHandler) {
-//    this->terminate= false;
+StompConnectionProtocal::StompConnectionProtocal(User* user, connectionHandler* connectionhandler):toTerminate(false) {
     this->activeuser=user;
-    this->connectionHandler=connectionHandler;
-}
-void StompConnectionProtocal::setConnectionHandler(ConnectionHandler *connect) {
-    connectionHandler=connect;
+    this->connectionhandler=connectionhandler;
 }
 
-
+/**
+ * Receives frames from the client and communicates with the servers and passes and handles frames from the server.
+ */
 void StompConnectionProtocal::run() {
     std::string spliter = ":";
-    while (!activeuser->getTerminate()) {
-
+    while (!toTerminate) {
         std::string answer;
-        if (!connectionHandler->getLine(answer)) {
+        if (!connectionhandler->getLine(answer)) {
             std::cout << "Disconnected. Exiting...\n" << std::endl;
             activeuser->setTerminate(true);
         } else {
@@ -40,28 +34,35 @@ void StompConnectionProtocal::run() {
             } else if (stompCommand == "MESSAGE") {
                 this->gotMessageMessage(splitLines);
             }
-
         }
+        toTerminate = activeuser->getTerminate();
     }
 }
-vector<string> StompConnectionProtocal::split(string tosplite,char denimator)
+/**
+ * Splits a string into a desired way.
+ * @param tosplite A message to split.
+ * @param delimiter A delimiter to split the message by.
+ * @return A vector of split strings.
+ */
+vector<string> StompConnectionProtocal::split(string tosplite,char delimiter)
 {
     stringstream split(tosplite);
     string token;
     vector<string> ans;
-    while(getline(split,token,denimator))
+    while(getline(split,token,delimiter))
         ans.push_back(token);
     return ans;
 
 }
 
+/**
+ * Sends a frame to the server.
+ * @param frame A frame to be sent to the server
+ * @return True if the frame was sent and false otherwise.
+ */
 bool StompConnectionProtocal::send(string frame) {
     std::lock_guard<std::mutex> lock (_mutex);
-//    if(activeuser->getTerminate())
-//    {
-//        return false;
-//    }
-    if (!connectionHandler->sendLine(frame)) {
+    if (!connectionhandler->sendLine(frame)) {
         std::cout << "Disconnected. Exiting...\n" << std::endl;
         activeuser->setTerminate(true);
         return false;
@@ -69,6 +70,10 @@ bool StompConnectionProtocal::send(string frame) {
     return true;
 }
 
+/**
+ * Handles the case of a receipt frame received by the server.
+ * @param splitLines A frame to analyze.
+ */
 void StompConnectionProtocal:: gotReciteMessage(vector<string> splitLines)
 {
     vector<string> reciteid=this->split(splitLines.at(1),':');
@@ -100,51 +105,52 @@ void StompConnectionProtocal:: gotReciteMessage(vector<string> splitLines)
     }
 
 }
-
+/**
+ * Handles everything related to asking for book status and book borrow and returning.
+ * @param splitLines A message to turn into a frame and send to the server.
+ */
 void StompConnectionProtocal:: gotMessageMessage(vector<string> splitLines){
 
     string topic;
-    int subid;
     for(int i=1;i<=3;i++) {
         vector<string>temp =this->split(splitLines.at(i),':');
         if(temp.at(0)=="subscription")
-             subid=stoi(temp.at(1));
+             stoi(temp.at(1));
         if(temp.at(0)=="destination")
              topic =temp.at(1);
     }
-
-
+    
+int splitSize = splitLines.size();
     string body="";
-    for (int i=5;i<splitLines.size();i++)
+    for (int i=5;i<splitSize;i++)
     {
         if(splitLines.at(i)!="")
             body=body+splitLines.at(i)+"\n";
     }
     body=body.substr(0,body.length()-1);
-    //
-    //  cout << "body:"+body << endl;
     vector<string> bodyWords = this->split(body,' ');
-    if (bodyWords.size()>=5&&body.find("wish to borrow") != string::npos) // bo wishes to boorow dune
+    int bodySize=bodyWords.size();
+    if (bodySize>=5&&body.find("wish to borrow") != string::npos) // bo wishes to borrow dune
     {
         this->WishtoBorrow(bodyWords,topic);
 
     }
-     else if (bodyWords.size()>=4&&bodyWords.at(0)!=activeuser->getUsername()&&bodyWords.at(1)==("has")&&bodyWords.at(2)=="added")//bob has added dune
+     else if (bodySize>=6&&bodyWords.at(1)==("has")&&bodyWords.at(2)=="added")//bob has added the book dune
     {
-        this->HadAdded(bodyWords,topic);
+        this->HasAdded(bodyWords,topic);
     }
-    else if (bodyWords.size()>=3&&bodyWords.at(1)==("has"))//bob has dune
+    else if (bodySize>=3&&bodyWords.at(1)==("has"))//bob has dune
     {
-        this->HadBook(bodyWords,topic);
+        this->HasBook(bodyWords,topic);
     }
-    else if (bodyWords.size()>=4&&bodyWords.at(0)==("Taking")) //Taking Dune from john
+    else if (bodySize>=4&&bodyWords.at(0)==("Taking")) //Taking Dune from john
     {
 
-        string username =bodyWords.at(bodyWords.size()-1);
+        string username =bodyWords.at(bodySize-1);
         if(username==activeuser->getUsername())
         {
             string book="";
-            for(int i=1;i<(bodyWords.size()-2);i++)
+            for(int i=1;i<(bodySize-2);i++)
             {
                 book=book+bodyWords.at(i)+" ";
             }
@@ -160,14 +166,14 @@ void StompConnectionProtocal:: gotMessageMessage(vector<string> splitLines){
         }
 
     }
-    else if (bodyWords.size()>=4&&bodyWords.at(0)==("Returning"))//Returning Dune to john
+    else if (bodySize>=4&&bodyWords.at(0)==("Returning"))//Returning Dune to john
     {
 
-        string username = bodyWords.at(bodyWords.size()-1);
+        string username = bodyWords.at(bodySize-1);
         if(username==activeuser->getUsername())
         {
             string book="";
-            for(int i=1;i<(bodyWords.size()-2);i++)
+            for(int i=1;i<(bodySize-2);i++)
             {
                 book=book+bodyWords.at(i)+" ";
             }
@@ -176,16 +182,22 @@ void StompConnectionProtocal:: gotMessageMessage(vector<string> splitLines){
         }
 
     }
-    else if (bodyWords.size()>=2&&bodyWords.at(0)=="book"&&bodyWords.at(1)=="status")//Book status
+    else if (bodySize>=2&&bodyWords.at(0)=="book"&&bodyWords.at(1)=="status")//Book status
     {
         Send ans(topic,activeuser->getUsername()+":"+activeuser->printBooksInTopic(topic));
         this->send(ans.toString());
     }
 }
+/**
+ * Creates a send frame for a book a client wants to borrow.
+ * @param bodyWords The meesage to turn into a send frame.
+ * @param topic A topic we search the books locations at.
+ */
 void StompConnectionProtocal:: WishtoBorrow(vector<string> bodyWords,string topic)
 {
+    int bodySize=bodyWords.size();
     string book="";
-    for(int i=4;i<bodyWords.size();i++)
+    for(int i=4;i<bodySize;i++)
     {
         book=book+bodyWords.at(i)+" ";
     }
@@ -198,14 +210,14 @@ void StompConnectionProtocal:: WishtoBorrow(vector<string> bodyWords,string topi
         this->send(ans.toString());
     }
 }
-void StompConnectionProtocal:: HadBook(vector<string> bodyWords,string topic)
+void StompConnectionProtocal:: HasBook(vector<string> bodyWords,string topic)
 {
+    int bodySize=bodyWords.size();
     string book="";
-    for(int i=2;i<bodyWords.size();i++)
+    for(int i=2;i<bodySize;i++)
         book=book+bodyWords.at(i)+" ";
     book=book.substr(0,book.length()-1);
-    cout<<book<<endl;
-    if(activeuser->hasbooksWantingToborrow(topic,book))
+    if(bodyWords.at(0)!=activeuser->getUsername()&&activeuser->hasbooksWantingToborrow(topic,book))
     {
         string userToTakeFrom=bodyWords.at(0);
         activeuser->addBorrowedbook(topic,book,userToTakeFrom);
@@ -213,15 +225,15 @@ void StompConnectionProtocal:: HadBook(vector<string> bodyWords,string topic)
         this->send(ans.toString());
     }
 }
-void StompConnectionProtocal:: HadAdded(vector<string> bodyWords,string topic)
+void StompConnectionProtocal:: HasAdded(vector<string> bodyWords,string topic)
 {
+    int bodySize = bodyWords.size();
     string book="";
-    for(int i=5;i<bodyWords.size();i++)
+    for(int i=5;i<bodySize;i++)
     {
         book=book+bodyWords.at(i)+" ";
     }
     book=book.substr(0,book.length()-1);
-    //  cout << book<< endl;
     if(activeuser->hasbooksWantingToborrow(topic,book))
     {
         string userToTakeFrom=bodyWords.at(0);
