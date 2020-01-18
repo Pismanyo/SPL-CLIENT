@@ -113,17 +113,8 @@ void UserCommands::run() {
                 status(inputs[1]);
             }
         }
-        else if (inputs[0].compare("terminate") == 0) {
+        }
 
-            if (counter != 1)
-                cout << "incorrect input format" << endl;
-            else {
-                this->terminate();
-            }
-        }
-        }
-    this->finalTerminate= true;
-    }
 
 UserCommands::UserCommands(User *active,StompConnectionProtocal* stomp,Connect a) {
     this->activeuser = active;
@@ -159,17 +150,7 @@ void UserCommands::subsribe(string topic) {
     int id=activeuser->numForRecite();
     Subscribe ans(topic,id,recite);
     activeuser->addPendingrecite(recite,ans.toString());
-    cout<< std::to_string(id) << endl;
     this->stomp->send(ans.toString());
-}
-void UserCommands::terminate() {
-    this->activeuser->setTerminate(true);
-    this->setFinalTerminate(true);
-    int receipt =activeuser->numForRecite();
-    Disconnect terminate(receipt);
-    activeuser->addPendingrecite(receipt, terminate.toString());
-    this->stomp->send(terminate.toString());
-
 }
 
 void UserCommands::logout() {

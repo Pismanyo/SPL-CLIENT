@@ -129,13 +129,13 @@ void StompConnectionProtocal:: gotMessageMessage(vector<string> splitLines){
         this->WishtoBorrow(bodyWords,topic);
 
     }
-    else if (bodyWords.size()>=4&&bodyWords.at(1)==("has")&&bodyWords.at(2)=="book")//bob has book dune
-    {
-        this->HadBook(bodyWords,topic);
-    }
-    else if (bodyWords.size()>=4&&bodyWords.at(0)!=activeuser->getUsername()&&bodyWords.at(1)==("has")&&bodyWords.at(2)=="added")//bob has added dune
+     else if (bodyWords.size()>=4&&bodyWords.at(0)!=activeuser->getUsername()&&bodyWords.at(1)==("has")&&bodyWords.at(2)=="added")//bob has added dune
     {
         this->HadAdded(bodyWords,topic);
+    }
+    else if (bodyWords.size()>=3&&bodyWords.at(1)==("has"))//bob has dune
+    {
+        this->HadBook(bodyWords,topic);
     }
     else if (bodyWords.size()>=4&&bodyWords.at(0)==("Taking")) //Taking Dune from john
     {
@@ -194,16 +194,17 @@ void StompConnectionProtocal:: WishtoBorrow(vector<string> bodyWords,string topi
         activeuser->addbooksWantingToborrow(topic,book);
 
     else if (activeuser->containsbook(topic,book)||activeuser->hasBorrowedbook(topic,book)){
-        Send ans(topic,activeuser->getUsername()+" has book "+book);
+        Send ans(topic,activeuser->getUsername()+" has "+book);
         this->send(ans.toString());
     }
 }
 void StompConnectionProtocal:: HadBook(vector<string> bodyWords,string topic)
 {
     string book="";
-    for(int i=3;i<bodyWords.size();i++)
+    for(int i=2;i<bodyWords.size();i++)
         book=book+bodyWords.at(i)+" ";
     book=book.substr(0,book.length()-1);
+    cout<<book<<endl;
     if(activeuser->hasbooksWantingToborrow(topic,book))
     {
         string userToTakeFrom=bodyWords.at(0);

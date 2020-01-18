@@ -55,10 +55,6 @@ Book Books::getBookBorrwed(string name) {
 }
 
 Book Books::getBookRented(string name) {
-
-    cout<<booksRentedOut[name].getName()<<endl;
-    cout<<booksRentedOut[name].isBorrowed()<<endl;
-
     return this->booksRentedOut[name];
 }
 
@@ -73,7 +69,7 @@ void Books::addbooksWantingToborrow(Book book) {
 }
 
 void Books::removebooksWantingToborrow(string book) {
-    this->booksBorrowed.erase(book);
+    this->booksWantingToborrow.erase(book);
 }
 
 string Books::allBooksOwned() {
