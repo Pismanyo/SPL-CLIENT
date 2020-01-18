@@ -44,7 +44,7 @@ public:
     void addPendingrecite(int recite,string frame);
     int getidViaTopic(string topic);
     void subsribe(string topic,int id);
-    void unsubsribe(int id);
+    string unsubsribe(int id);
     int numForRecite();
     string getUsername();
     bool getTerminate();
@@ -52,7 +52,7 @@ public:
     string getPassword();
     bool isActive();
     void setActive(bool act);
-    void addBook(string topic, string book);
+    bool addBook(string topic, string book);
     bool containsbook(string topic, string book);
     void setuserandpass(string username,string passsword);
     void setawait(bool await);
@@ -68,7 +68,7 @@ public:
     void removeBookRentedOut(string topic,string book);
     string printBooksInTopic(string topic);
 
-    void addBooksNotSubsribed(string topic, string book);
+    bool addBooksNotSubsribed(string topic, string book);
 };
 
 

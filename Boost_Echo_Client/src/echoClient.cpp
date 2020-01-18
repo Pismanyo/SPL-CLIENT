@@ -22,7 +22,7 @@ int main (int argc, char *argv[]) {
        std::stringstream iss(answer1);
        while (iss >> word && counter < 6)
            inputs[counter++] = word;
-       if (inputs[0].compare("login") == 0) {
+       if (inputs[0].compare("login") == 0&&!finalTerminate) {
            stomp = nullptr;
            cout << "trying to connect" << endl;
            activeUser = new User();
@@ -47,6 +47,10 @@ int main (int argc, char *argv[]) {
                th2.join();
                if (usercommands->getFinalTerminate()) {
                    finalTerminate = true;
+                   delete (activeUser);
+                   delete (stomp);
+                   delete (usercommands);
+                   delete (connectionHandler);
                } else {
 //                   connectionHandler->close();
                    delete (activeUser);

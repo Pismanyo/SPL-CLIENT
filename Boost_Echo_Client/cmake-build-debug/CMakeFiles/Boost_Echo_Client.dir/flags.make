@@ -6,5 +6,5 @@ CXX_FLAGS =  -std=c++11 -pthread -g
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/include 
+CXX_INCLUDES = -I/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/include 
 

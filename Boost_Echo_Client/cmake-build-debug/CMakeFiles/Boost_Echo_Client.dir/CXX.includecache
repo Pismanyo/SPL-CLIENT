@@ -80,15 +80,13 @@ iostream
 boost/asio.hpp
 -
 
-/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/UserCommands.cpp
-cstring
+/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/echoClient.cpp
+stdlib.h
 -
 connectionHandler.h
--
-Frame.h
 -
 StompConnectionProtocal.h
 -
 UserCommands.h
-/home/joni/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/UserCommands.h
+/users/studs/bsc/2020/liordu/CLionProjects/SPL-CLIENT/Boost_Echo_Client/src/UserCommands.h
 

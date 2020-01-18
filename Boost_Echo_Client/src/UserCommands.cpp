@@ -122,6 +122,7 @@ void UserCommands::run() {
             }
         }
         }
+    this->finalTerminate= true;
     }
 
 UserCommands::UserCommands(User *active,StompConnectionProtocal* stomp,Connect a) {
@@ -197,13 +198,18 @@ void UserCommands::unsubsribe(string topic) {
 }
 
 void UserCommands::add(string topic,string book) {
-    if(!activeuser->isSubsribed(topic))
-        activeuser->addBooksNotSubsribed(topic,book);
-    else {
-        activeuser->addBook(topic, book);
+    if(!activeuser->isSubsribed(topic)) {
+        if (!activeuser->addBooksNotSubsribed(topic, book))
+            cout << "book already exists" << endl;
     }
-    Send ans(topic,(activeuser->getUsername()+" has added the book "+book));
-    this->stomp->send(ans.toString());
+    else {
+        if(!activeuser->addBook(topic, book))
+                cout << "book already exists" << endl;
+        else {
+            Send ans(topic, (activeuser->getUsername() + " has added the book " + book));
+            this->stomp->send(ans.toString());
+        }
+    }
 
 
 }

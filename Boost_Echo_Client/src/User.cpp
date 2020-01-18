@@ -88,10 +88,17 @@ void User::subsribe(string topic,int id) {
   //  borrowedbooks.insert({topic,map<string,string>()});
 }
 
-void User::addBooksNotSubsribed(string topic,string book) {
-    this->books.insert({topic,Books()});
-    this->addBook(topic,book);
-    this->books[topic].setsubbed(false);
+bool User::addBooksNotSubsribed(string topic,string book) {
+    if(this->books.count(topic)==0) {
+        this->books.insert({topic, Books()});
+        this->books[topic].setsubbed(false);
+    }
+    if(! this->books[topic].hasBook(book)) {
+        this->books[topic].addBook(Book(book));
+        return true;
+    }
+    return false;
+
     //books.insert({topic,vector<string>()});
     // lookingForBorrowedBooks.insert({topic,vector<string>()});
     //  borrowedbooks.insert({topic,map<string,string>()});
@@ -102,18 +109,23 @@ int User::getidViaTopic(string topic) {
 
 }
 
-void User::unsubsribe(int id) {
+string User::unsubsribe(int id) {
     string topic=this->IdToTopic[id];
     this->TopicToId.erase(topic);
     this->IdToTopic.erase(id);
     books.erase(topic);
+    return topic;
     //lookingForBorrowedBooks.erase(topic);
    // borrowedbooks.erase(topic);
 
 }
 
-void User::addBook(string topic, string book) {
-    this->books[topic].addBook(Book(book));
+bool User::addBook(string topic, string book) {
+    if(!this->containsbook(topic,book)) {
+        this->books[topic].addBook(Book(book));
+        return true;
+    }
+    return false;
 
 
 }

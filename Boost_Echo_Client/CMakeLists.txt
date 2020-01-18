@@ -9,10 +9,7 @@ include_directories(include)
 add_executable(Boost_Echo_Client
         include/connectionHandler.h
         include/Frame.h
-        include/StompConnectionHandler.h
         include/StompConnectionProtocal.h
-        include/StompMessageEncoderDecoder.h
-        include/StompMessageProtocol.h
         include/User.h
         include/UserCommands.h
         src/connectionHandler.cpp

@@ -30,9 +30,11 @@ void StompConnectionProtocal::run() {
             string stompCommand = splitLines[0];
             if (stompCommand == "ERROR") {
                 activeuser->setTerminate(true);
+
             } else if (stompCommand == "CONNECTED") {
                 activeuser->setActive(true);
                 activeuser->setawait(false);
+                std::cout << "Login successful\n" << std::endl;
             } else if (stompCommand == "RECEIPT") {
                 this->gotReciteMessage(splitLines);
             } else if (stompCommand == "MESSAGE") {
@@ -77,8 +79,8 @@ void StompConnectionProtocal:: gotReciteMessage(vector<string> splitLines)
     {
         vector<string> recitLineSplite=this->split(frameLines.at(1),':');
         int subId=  stoi(recitLineSplite.at(1));
-        activeuser->unsubsribe(subId);
-        cout << "Unsubsribed successfil" << endl;
+        string topic=activeuser->unsubsribe(subId);
+        cout << "Exited club "+ topic<< endl;
 
 
     }
@@ -89,7 +91,7 @@ void StompConnectionProtocal:: gotReciteMessage(vector<string> splitLines)
         secondHeader=this->split(frameLines.at(2),':');
         int subId=  stoi(secondHeader.at(1));
         activeuser->subsribe(topic,subId);
-        cout << "Subsribed successfil" << endl;
+        cout << "Joined club "+topic << endl;
 
     }
     else if (splitLines.at(0)=="DISCONNECT")
